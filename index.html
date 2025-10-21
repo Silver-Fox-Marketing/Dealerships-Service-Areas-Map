@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c9ff970d7ccefc0cbb2dea9d559783c9 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 20px; left: 20px; width: 260px; z-index: 9999; 
+     background: white; padding: 10px; border: 2px solid #444; border-radius: 8px;
+     font-size: 14px;">
+  <b>Legend — Service Areas</b><br>
+  <span style="display:inline-block;width:12px;height:12px;background:red;margin-right:6px;"></span> Untapped (ZERO)<br>
+  <span style="display:inline-block;width:12px;height:12px;background:orange;margin-right:6px;"></span> Unknown / TBD<br>
+  <span style="display:inline-block;width:12px;height:12px;background:green;margin-right:6px;"></span> Active / Existing<br>
+  <hr style="margin:6px 0;">
+  <b>Use the layer control (top right)</b><br>
+  Show <i>Service Areas</i>, <i>Dealership Accounts</i>, or <b>Both</b>.
+</div>
+    
+            <div class="folium-map" id="map_c9ff970d7ccefc0cbb2dea9d559783c9" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c9ff970d7ccefc0cbb2dea9d559783c9 = L.map(
+                "map_c9ff970d7ccefc0cbb2dea9d559783c9",
+                {
+                    center: [38.8, -90.5],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d2d5bae02b836b42f221c5c1df3a653c = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_c9ff970d7ccefc0cbb2dea9d559783c9);
+        
+    
+            var feature_group_5a0996e2d600c931bdc6a13da492e8ab = L.featureGroup(
+                {}
+            ).addTo(map_c9ff970d7ccefc0cbb2dea9d559783c9);
+        
+    
+            var marker_d199b081a869e95227fb9e45cd4ff961 = L.marker(
+                [38.627, -90.1994],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_ddd60247b589c2f1184991a032243dba = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d199b081a869e95227fb9e45cd4ff961.setIcon(icon_ddd60247b589c2f1184991a032243dba);
+        
+    
+        var popup_b2468df63254816b0958ffbc904be49a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e59cd9bbc6dffd9e26734c6754475eec = $(`<div id="html_e59cd9bbc6dffd9e26734c6754475eec" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>St. Louis, MO</b><br>       <b>Dealership Density:</b> 100+ in metro<br>       <b>Silver Fox Clients:</b> 21 dealerships<br>       <b>Why Include:</b> Primary market, maintain visibility<br>       <b>Strategic Value:</b> Core market with 58% of current client base, high search volume<br>       <b>Data Source:</b> Known client data     </div>     </div>`)[0];
+            popup_b2468df63254816b0958ffbc904be49a.setContent(html_e59cd9bbc6dffd9e26734c6754475eec);
+        
+
+        marker_d199b081a869e95227fb9e45cd4ff961.bindPopup(popup_b2468df63254816b0958ffbc904be49a)
+        ;
+
+        
+    
+    
+            var marker_387185ba4f948fabcaa2e9c9fe1b6049 = L.marker(
+                [38.5767, -92.1735],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_57be90d2e58fd038bcfa2db361069ca3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_387185ba4f948fabcaa2e9c9fe1b6049.setIcon(icon_57be90d2e58fd038bcfa2db361069ca3);
+        
+    
+        var popup_eed5b7dd36dd978f6b52efb2d44210b6 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_fb684a230d62b64a2ee3a89e79713175 = $(`<div id="html_fb684a230d62b64a2ee3a89e79713175" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Jefferson City, MO</b><br>       <b>Dealership Density:</b> 12+<br>       <b>Silver Fox Clients:</b> Unknown/TBD<br>       <b>Why Include:</b> State capital, regional hub<br>       <b>Strategic Value:</b> Missouri state capital (government fleet opportunities), central MO location<br>       <b>Data Source:</b> General market knowledge     </div>     </div>`)[0];
+            popup_eed5b7dd36dd978f6b52efb2d44210b6.setContent(html_fb684a230d62b64a2ee3a89e79713175);
+        
+
+        marker_387185ba4f948fabcaa2e9c9fe1b6049.bindPopup(popup_eed5b7dd36dd978f6b52efb2d44210b6)
+        ;
+
+        
+    
+    
+            var marker_3c765804587b16b6668bf9ff2795fb4a = L.marker(
+                [39.0997, -94.5786],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_f08f8b3c1d15c1ea62cb596122238877 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_3c765804587b16b6668bf9ff2795fb4a.setIcon(icon_f08f8b3c1d15c1ea62cb596122238877);
+        
+    
+        var popup_efe73d94e5d5de74f9fff6d55ff6bb95 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_73d20964c0dc57661f16e66e27462ad5 = $(`<div id="html_73d20964c0dc57661f16e66e27462ad5" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Kansas City, MO</b><br>       <b>Dealership Density:</b> 50+ verified<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> Missouri's largest untapped market<br>       <b>Strategic Value:</b> Largest city with zero presence, major dealer groups (Cable Dahmer, Hendrick)<br>       <b>Data Source:</b> Autotrader, Yelp (Oct 2025)     </div>     </div>`)[0];
+            popup_efe73d94e5d5de74f9fff6d55ff6bb95.setContent(html_73d20964c0dc57661f16e66e27462ad5);
+        
+
+        marker_3c765804587b16b6668bf9ff2795fb4a.bindPopup(popup_efe73d94e5d5de74f9fff6d55ff6bb95)
+        ;
+
+        
+    
+    
+            var marker_de2997bfef66df57aa9647410b42f7dd = L.marker(
+                [38.9517, -92.3341],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_e624a1e60092ba42af55eb1adbe81a5c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_de2997bfef66df57aa9647410b42f7dd.setIcon(icon_e624a1e60092ba42af55eb1adbe81a5c);
+        
+    
+        var popup_bacedf07d7096fca01d718d408a60025 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f80c31c495ee04802b9be4ce6768c06c = $(`<div id="html_f80c31c495ee04802b9be4ce6768c06c" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Columbia, MO</b><br>       <b>Dealership Density:</b> 25+<br>       <b>Silver Fox Clients:</b> 9 dealerships (25% of clients)<br>       <b>Why Include:</b> Existing strong market, maintain dominance<br>       <b>Strategic Value:</b> Largest concentration of current clients, University of Missouri market<br>       <b>Data Source:</b> Known client data     </div>     </div>`)[0];
+            popup_bacedf07d7096fca01d718d408a60025.setContent(html_f80c31c495ee04802b9be4ce6768c06c);
+        
+
+        marker_de2997bfef66df57aa9647410b42f7dd.bindPopup(popup_bacedf07d7096fca01d718d408a60025)
+        ;
+
+        
+    
+    
+            var marker_635ce5a0a164b20d9564451e0e6522c8 = L.marker(
+                [39.0911, -94.4155],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_880ccf9e74274a44fbaf5cd6789dc537 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_635ce5a0a164b20d9564451e0e6522c8.setIcon(icon_880ccf9e74274a44fbaf5cd6789dc537);
+        
+    
+        var popup_0c080d9a9b0be94f3f5091f076cb8a54 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2a652e4d70951549d75d948436856224 = $(`<div id="html_2a652e4d70951549d75d948436856224" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Independence, MO</b><br>       <b>Dealership Density:</b> 15+ verified<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> KC metro suburb, heavy dealer concentration<br>       <b>Strategic Value:</b> Independence Auto Mall and Blue Ridge Cutoff corridor, large used car market<br>       <b>Data Source:</b> CarZing, dealer websites (Oct 2025)     </div>     </div>`)[0];
+            popup_0c080d9a9b0be94f3f5091f076cb8a54.setContent(html_2a652e4d70951549d75d948436856224);
+        
+
+        marker_635ce5a0a164b20d9564451e0e6522c8.bindPopup(popup_0c080d9a9b0be94f3f5091f076cb8a54)
+        ;
+
+        
+    
+    
+            var marker_f9df446513f3cff3045176cddcf2a39b = L.marker(
+                [38.9108, -94.3822],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_3390372587242e02f713735ff4e8770b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f9df446513f3cff3045176cddcf2a39b.setIcon(icon_3390372587242e02f713735ff4e8770b);
+        
+    
+        var popup_debc975ca685ebe15323cfc3f91cd837 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_84d6bcb9f3fc19319aa50b623257f675 = $(`<div id="html_84d6bcb9f3fc19319aa50b623257f675" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Lee's Summit, MO</b><br>       <b>Dealership Density:</b> 10+ verified<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> Affluent KC suburb, luxury market<br>       <b>Strategic Value:</b> Fastest-growing KC suburb, high-income demographics ($85K+ median), premium pricing<br>       <b>Data Source:</b> Dealer websites (Oct 2025)     </div>     </div>`)[0];
+            popup_debc975ca685ebe15323cfc3f91cd837.setContent(html_84d6bcb9f3fc19319aa50b623257f675);
+        
+
+        marker_f9df446513f3cff3045176cddcf2a39b.bindPopup(popup_debc975ca685ebe15323cfc3f91cd837)
+        ;
+
+        
+    
+    
+            var marker_d139cda7e36e42f733abbb45e73d8da1 = L.marker(
+                [39.0169, -94.2816],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_0e28845c6f433f782f53e87c776c4a5e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d139cda7e36e42f733abbb45e73d8da1.setIcon(icon_0e28845c6f433f782f53e87c776c4a5e);
+        
+    
+        var popup_7f68acd337a156fcbdece5db88439a72 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ba2d380acd1770200866e06f4a8a3d0e = $(`<div id="html_ba2d380acd1770200866e06f4a8a3d0e" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Blue Springs, MO</b><br>       <b>Dealership Density:</b> 12+<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> KC metro, dealership corridor<br>       <b>Strategic Value:</b> Eastern KC metro, I-70 dealership corridor, completes KC coverage<br>       <b>Data Source:</b> Market research     </div>     </div>`)[0];
+            popup_7f68acd337a156fcbdece5db88439a72.setContent(html_ba2d380acd1770200866e06f4a8a3d0e);
+        
+
+        marker_d139cda7e36e42f733abbb45e73d8da1.bindPopup(popup_7f68acd337a156fcbdece5db88439a72)
+        ;
+
+        
+    
+    
+            var marker_93d8125267e5e542ce991cb1644b0f58 = L.marker(
+                [37.2089, -93.2923],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_7f3d446014e3d1f9e7d261ef6612d08a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_93d8125267e5e542ce991cb1644b0f58.setIcon(icon_7f3d446014e3d1f9e7d261ef6612d08a);
+        
+    
+        var popup_9546f02021f59dec4a42527e55c9e007 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_32c859333b00b3ad763e4b9c6c17980c = $(`<div id="html_32c859333b00b3ad763e4b9c6c17980c" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Springfield, MO</b><br>       <b>Dealership Density:</b> 20+ verified<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> MO's 3rd largest city, SW regional hub<br>       <b>Strategic Value:</b> Serves 4-county area (475K metro), 100+ mile draw radius, limited competition<br>       <b>Data Source:</b> Autotrader, KBB (Oct 2025)     </div>     </div>`)[0];
+            popup_9546f02021f59dec4a42527e55c9e007.setContent(html_32c859333b00b3ad763e4b9c6c17980c);
+        
+
+        marker_93d8125267e5e542ce991cb1644b0f58.bindPopup(popup_9546f02021f59dec4a42527e55c9e007)
+        ;
+
+        
+    
+    
+            var marker_27a80b2cc5392a55a47aca72a98dbf34 = L.marker(
+                [37.3059, -89.5181],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_682e15da1f777be287af63b71c0d0583 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_27a80b2cc5392a55a47aca72a98dbf34.setIcon(icon_682e15da1f777be287af63b71c0d0583);
+        
+    
+        var popup_d0c182872775045e783d24e46c549678 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_26c954dbe00c9161a24f6203d7dae0b7 = $(`<div id="html_26c954dbe00c9161a24f6203d7dae0b7" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Cape Girardeau, MO</b><br>       <b>Dealership Density:</b> 8-10 verified<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> Southeast MO regional hub<br>       <b>Strategic Value:</b> Only major city between St. Louis and Memphis, serves 5-county area<br>       <b>Data Source:</b> Dealer websites, Yelp (Oct 2025)     </div>     </div>`)[0];
+            popup_d0c182872775045e783d24e46c549678.setContent(html_26c954dbe00c9161a24f6203d7dae0b7);
+        
+
+        marker_27a80b2cc5392a55a47aca72a98dbf34.bindPopup(popup_d0c182872775045e783d24e46c549678)
+        ;
+
+        
+    
+    
+            var marker_f50cfa3f5e35e44280907b6a36519b74 = L.marker(
+                [37.0842, -94.5133],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_9396a8ae0c5236d42261b3ca03570199 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f50cfa3f5e35e44280907b6a36519b74.setIcon(icon_9396a8ae0c5236d42261b3ca03570199);
+        
+    
+        var popup_7ea68c3b01ac80cc0469a702bf5f67f5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b637b85a3412b562bb66bade4579da61 = $(`<div id="html_b637b85a3412b562bb66bade4579da61" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Joplin, MO</b><br>       <b>Dealership Density:</b> 15+ verified<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> SW Missouri, 4-state regional hub<br>       <b>Strategic Value:</b> Serves MO/KS/OK/AR region, Range Line Road corridor, post-tornado growth<br>       <b>Data Source:</b> Yelp, Autotrader (Oct 2025)     </div>     </div>`)[0];
+            popup_7ea68c3b01ac80cc0469a702bf5f67f5.setContent(html_b637b85a3412b562bb66bade4579da61);
+        
+
+        marker_f50cfa3f5e35e44280907b6a36519b74.bindPopup(popup_7ea68c3b01ac80cc0469a702bf5f67f5)
+        ;
+
+        
+    
+    
+            var marker_f81eb2acb494b2fe3d2167e61439427a = L.marker(
+                [38.5926, -90.3573],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_2b2bb7f5b87794c13537085f055cbd40 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f81eb2acb494b2fe3d2167e61439427a.setIcon(icon_2b2bb7f5b87794c13537085f055cbd40);
+        
+    
+        var popup_ac8251c5eb09b1a706e81789f614c8d0 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0f29fea90fa4feb29584c50e4cd8c2e0 = $(`<div id="html_0f29fea90fa4feb29584c50e4cd8c2e0" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Webster Groves, MO</b><br>       <b>Dealership Density:</b> 5-8 nearby<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> Affluent St. Louis suburb<br>       <b>Strategic Value:</b> High-income ($95K+ median), luxury dealers nearby, premium pricing market<br>       <b>Data Source:</b> Market analysis     </div>     </div>`)[0];
+            popup_ac8251c5eb09b1a706e81789f614c8d0.setContent(html_0f29fea90fa4feb29584c50e4cd8c2e0);
+        
+
+        marker_f81eb2acb494b2fe3d2167e61439427a.bindPopup(popup_ac8251c5eb09b1a706e81789f614c8d0)
+        ;
+
+        
+    
+    
+            var marker_bd9af0311bf7884205c2f5e8805cf9c1 = L.marker(
+                [38.6426, -90.3237],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_28de7ebcd21fcba20205c14de06e4503 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_bd9af0311bf7884205c2f5e8805cf9c1.setIcon(icon_28de7ebcd21fcba20205c14de06e4503);
+        
+    
+        var popup_6509e86d32f407470217e0734a9d3014 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7f161619bbe66e440458882fd2e78367 = $(`<div id="html_7f161619bbe66e440458882fd2e78367" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Clayton, MO</b><br>       <b>Dealership Density:</b> 8+ nearby<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> Most affluent St. Louis municipality<br>       <b>Strategic Value:</b> St. Louis County seat, wealthiest suburb ($120K+ median), B2B networking<br>       <b>Data Source:</b> Market analysis     </div>     </div>`)[0];
+            popup_6509e86d32f407470217e0734a9d3014.setContent(html_7f161619bbe66e440458882fd2e78367);
+        
+
+        marker_bd9af0311bf7884205c2f5e8805cf9c1.bindPopup(popup_6509e86d32f407470217e0734a9d3014)
+        ;
+
+        
+    
+    
+            var marker_1f8430389801673fd571031668b3fd41 = L.marker(
+                [38.8114, -90.8529],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_ab67ae221743977a0b225d0a00a9e064 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_1f8430389801673fd571031668b3fd41.setIcon(icon_ab67ae221743977a0b225d0a00a9e064);
+        
+    
+        var popup_11af16ab6b7935ad9dadee8f879722c5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_6c622d68454bbaaa513ce31cbbade5ad = $(`<div id="html_6c622d68454bbaaa513ce31cbbade5ad" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Wentzville, MO</b><br>       <b>Dealership Density:</b> 10+<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> Fastest-growing MO city, GM plant<br>       <b>Strategic Value:</b> GM Assembly Plant location, Pearce Blvd corridor, new franchise openings<br>       <b>Data Source:</b> Market research     </div>     </div>`)[0];
+            popup_11af16ab6b7935ad9dadee8f879722c5.setContent(html_6c622d68454bbaaa513ce31cbbade5ad);
+        
+
+        marker_1f8430389801673fd571031668b3fd41.bindPopup(popup_11af16ab6b7935ad9dadee8f879722c5)
+        ;
+
+        
+    
+    
+            var marker_256dc4729ee8835feb5d96fed0af5ffa = L.marker(
+                [38.5134, -90.4423],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_00be5ffbf8345431423e44ac0fd46298 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_256dc4729ee8835feb5d96fed0af5ffa.setIcon(icon_00be5ffbf8345431423e44ac0fd46298);
+        
+    
+        var popup_24146e5cfbe59bb56ae8acfa3ee01bf2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e40a18422e34301ec6a04ed0ad7d83a7 = $(`<div id="html_e40a18422e34301ec6a04ed0ad7d83a7" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Fenton, MO</b><br>       <b>Dealership Density:</b> 8+<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> South St. Louis County commercial hub<br>       <b>Strategic Value:</b> Gravois Bluffs area, Gravois Road dealerships, growing suburban market<br>       <b>Data Source:</b> Market research     </div>     </div>`)[0];
+            popup_24146e5cfbe59bb56ae8acfa3ee01bf2.setContent(html_e40a18422e34301ec6a04ed0ad7d83a7);
+        
+
+        marker_256dc4729ee8835feb5d96fed0af5ffa.bindPopup(popup_24146e5cfbe59bb56ae8acfa3ee01bf2)
+        ;
+
+        
+    
+    
+            var marker_ce8ddb9248a05d713385aa35380cf387 = L.marker(
+                [38.5201, -89.984],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_8abfd483c548bbddeaa7781fe6e9722e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ce8ddb9248a05d713385aa35380cf387.setIcon(icon_8abfd483c548bbddeaa7781fe6e9722e);
+        
+    
+        var popup_446131eb421562a44800984693b2135b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_57f7cf8b5b9e4dc245416ca15187a229 = $(`<div id="html_57f7cf8b5b9e4dc245416ca15187a229" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Belleville, IL</b><br>       <b>Dealership Density:</b> 10+ verified<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> Largest Metro East city, IL gateway<br>       <b>Strategic Value:</b> Metro East hub (400K+ served), Scott AFB nearby (fleet opportunity), IL Route 15/159 corridor<br>       <b>Data Source:</b> Yelp, Autotrader (Oct 2025)     </div>     </div>`)[0];
+            popup_446131eb421562a44800984693b2135b.setContent(html_57f7cf8b5b9e4dc245416ca15187a229);
+        
+
+        marker_ce8ddb9248a05d713385aa35380cf387.bindPopup(popup_446131eb421562a44800984693b2135b)
+        ;
+
+        
+    
+    
+            var marker_6685ce14a3afc0ebb07b15b13649ad50 = L.marker(
+                [38.5889, -90.0012],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_39aaa9ed9a904b323458ee37d4b3026f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6685ce14a3afc0ebb07b15b13649ad50.setIcon(icon_39aaa9ed9a904b323458ee37d4b3026f);
+        
+    
+        var popup_25465578b6811b5cc45ebe4f71a0f039 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_33caa5bd540c918bc4e8d12735281aab = $(`<div id="html_33caa5bd540c918bc4e8d12735281aab" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Fairview Heights, IL</b><br>       <b>Dealership Density:</b> 8-12 verified (306 within 50mi)<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> AutoPark dealership district<br>       <b>Strategic Value:</b> Major concentration in 2-mile radius, IL Route 159 corridor, regional hub<br>       <b>Data Source:</b> CarGurus, Autotrader (Oct 2025)     </div>     </div>`)[0];
+            popup_25465578b6811b5cc45ebe4f71a0f039.setContent(html_33caa5bd540c918bc4e8d12735281aab);
+        
+
+        marker_6685ce14a3afc0ebb07b15b13649ad50.bindPopup(popup_25465578b6811b5cc45ebe4f71a0f039)
+        ;
+
+        
+    
+    
+            var marker_1cfe2801d961f1c2d72f776955441f5f = L.marker(
+                [38.8114, -89.9532],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_6d13fa1c2d3f2be119d7f025dbd2029e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_1cfe2801d961f1c2d72f776955441f5f.setIcon(icon_6d13fa1c2d3f2be119d7f025dbd2029e);
+        
+    
+        var popup_555d6e3c4b2a308210e710ce4ae33813 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9928273fd1190970c2bc0f87354e3f53 = $(`<div id="html_9928273fd1190970c2bc0f87354e3f53" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Edwardsville, IL</b><br>       <b>Dealership Density:</b> 12+<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> Affluent Metro East, university market<br>       <b>Strategic Value:</b> SIUE market (13K students), affluent demographics, IL-159/IL-157 growth<br>       <b>Data Source:</b> Market research     </div>     </div>`)[0];
+            popup_555d6e3c4b2a308210e710ce4ae33813.setContent(html_9928273fd1190970c2bc0f87354e3f53);
+        
+
+        marker_1cfe2801d961f1c2d72f776955441f5f.bindPopup(popup_555d6e3c4b2a308210e710ce4ae33813)
+        ;
+
+        
+    
+    
+            var marker_dab4d10421470a2c3d3722d29d88ddab = L.marker(
+                [38.6703, -90.0121],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_2171fe6729e890fb8f40d933c3234093 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_dab4d10421470a2c3d3722d29d88ddab.setIcon(icon_2171fe6729e890fb8f40d933c3234093);
+        
+    
+        var popup_aeb2d5c85856aa911e6d69d4273906d6 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b6fa67d8a00265fec7483566907cba36 = $(`<div id="html_b6fa67d8a00265fec7483566907cba36" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Collinsville, IL</b><br>       <b>Dealership Density:</b> 10+<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> IL-157 auto mile gateway<br>       <b>Strategic Value:</b> Gateway Motorsports Park nearby, Metro East commercial hub, strong used car market<br>       <b>Data Source:</b> Market research     </div>     </div>`)[0];
+            popup_aeb2d5c85856aa911e6d69d4273906d6.setContent(html_b6fa67d8a00265fec7483566907cba36);
+        
+
+        marker_dab4d10421470a2c3d3722d29d88ddab.bindPopup(popup_aeb2d5c85856aa911e6d69d4273906d6)
+        ;
+
+        
+    
+    
+            var marker_a1c9843b94eda1dcfeeb13ced7c4c946 = L.marker(
+                [38.5923, -89.9112],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_d4ec21585d71f450ce4b89c3157f32c0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a1c9843b94eda1dcfeeb13ced7c4c946.setIcon(icon_d4ec21585d71f450ce4b89c3157f32c0);
+        
+    
+        var popup_2ccb0b887892ca2b6c18dacad60f3136 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0d4a389c08abf69f736abbcd66b41806 = $(`<div id="html_0d4a389c08abf69f736abbcd66b41806" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>O'Fallon, IL</b><br>       <b>Dealership Density:</b> 8+<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> Fastest-growing Illinois city<br>       <b>Strategic Value:</b> New dealership development, Scott AFB area, distinct from O'Fallon MO<br>       <b>Data Source:</b> Market research     </div>     </div>`)[0];
+            popup_2ccb0b887892ca2b6c18dacad60f3136.setContent(html_0d4a389c08abf69f736abbcd66b41806);
+        
+
+        marker_a1c9843b94eda1dcfeeb13ced7c4c946.bindPopup(popup_2ccb0b887892ca2b6c18dacad60f3136)
+        ;
+
+        
+    
+    
+            var marker_e092d6f2a5070a425521b9a3c8df5012 = L.marker(
+                [40.1164, -88.2434],
+                {}
+            ).addTo(feature_group_5a0996e2d600c931bdc6a13da492e8ab);
+        
+    
+            var icon_d711c6e0483b86ffa3401e2014f69ade = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e092d6f2a5070a425521b9a3c8df5012.setIcon(icon_d711c6e0483b86ffa3401e2014f69ade);
+        
+    
+        var popup_50349227b7cfc7cdf8649b695cc38269 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1597a8d2907e654fc25cb464f8d37c9d = $(`<div id="html_1597a8d2907e654fc25cb464f8d37c9d" style="width: 100.0%; height: 100.0%;">     <div style='font-size:14px'>       <b>Champaign, IL</b><br>       <b>Dealership Density:</b> 15+ verified<br>       <b>Silver Fox Clients:</b> ZERO<br>       <b>Why Include:</b> Central IL hub, University of Illinois<br>       <b>Strategic Value:</b> U of I market (50K students), 230K metro, fleet opportunities (university/government)<br>       <b>Data Source:</b> Yelp, Drive217 network (Oct 2025)     </div>     </div>`)[0];
+            popup_50349227b7cfc7cdf8649b695cc38269.setContent(html_1597a8d2907e654fc25cb464f8d37c9d);
+        
+
+        marker_e092d6f2a5070a425521b9a3c8df5012.bindPopup(popup_50349227b7cfc7cdf8649b695cc38269)
+        ;
+
+        
+    
+    
+            var feature_group_07bd3a3b69f6b5a680d5c30f9d207475 = L.featureGroup(
+                {}
+            ).addTo(map_c9ff970d7ccefc0cbb2dea9d559783c9);
+        
+    
+            var marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354 = L.markerClusterGroup(
+                {}
+            );
+            feature_group_07bd3a3b69f6b5a680d5c30f9d207475.addLayer(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+            var circle_marker_c678f80fa7b9bca9ebd4983e68eea8fd = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_dbe13c0a529afd5ecba5b01179bd5dd7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0daeeabb10fcd4544d7d1116d85e7e5a = $(`<div id="html_0daeeabb10fcd4544d7d1116d85e7e5a" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Ackerman Toyota</b><br>       <b>Address:</b> Ackerman Toyota, Hampton Avenue, St. Louis, MO, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_dbe13c0a529afd5ecba5b01179bd5dd7.setContent(html_0daeeabb10fcd4544d7d1116d85e7e5a);
+        
+
+        circle_marker_c678f80fa7b9bca9ebd4983e68eea8fd.bindPopup(popup_dbe13c0a529afd5ecba5b01179bd5dd7)
+        ;
+
+        
+    
+    
+            var circle_marker_3553d034469aa7ae138bd7df30fe9340 = L.circleMarker(
+                [38.6609, -90.4226],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_dc951f43de1c2de34da2a6b89921dd81 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e78ee20ad5a86c30aa5fb611068298b0 = $(`<div id="html_e78ee20ad5a86c30aa5fb611068298b0" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Audi Creve Coeur</b><br>       <b>Address:</b> Audi Creve Coeur, Olive Boulevard, Creve Coeur, MO, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 2     </div>     </div>`)[0];
+            popup_dc951f43de1c2de34da2a6b89921dd81.setContent(html_e78ee20ad5a86c30aa5fb611068298b0);
+        
+
+        circle_marker_3553d034469aa7ae138bd7df30fe9340.bindPopup(popup_dc951f43de1c2de34da2a6b89921dd81)
+        ;
+
+        
+    
+    
+            var circle_marker_ae3535e1af4022f9e0706e9da2ce5432 = L.circleMarker(
+                [38.5834, -90.406],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_01ca3b4c3576b0a65381b17e68e7d4a2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_95aa888736efa60467794b27bbada3ee = $(`<div id="html_95aa888736efa60467794b27bbada3ee" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Audi Exchange of Kirkwood</b><br>       <b>Address:</b> Audi Exchange Kirkwood, Manchester Road, Kirkwood, MO, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_01ca3b4c3576b0a65381b17e68e7d4a2.setContent(html_95aa888736efa60467794b27bbada3ee);
+        
+
+        circle_marker_ae3535e1af4022f9e0706e9da2ce5432.bindPopup(popup_01ca3b4c3576b0a65381b17e68e7d4a2)
+        ;
+
+        
+    
+    
+            var circle_marker_fc6bd2549ce96ab4b558d71b3c0bc4c4 = L.circleMarker(
+                [38.592, -89.897],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_bab56f82b47c64819ced7b4395f9b7a3 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7219acb2fb2870a9b55bf6a87f297b91 = $(`<div id="html_7219acb2fb2870a9b55bf6a87f297b91" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Auffenberg Hyundai</b><br>       <b>Address:</b> Auffenberg Hyundai, Berg Boulevard, Shiloh, IL, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut, Custom &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 14     </div>     </div>`)[0];
+            popup_bab56f82b47c64819ced7b4395f9b7a3.setContent(html_7219acb2fb2870a9b55bf6a87f297b91);
+        
+
+        circle_marker_fc6bd2549ce96ab4b558d71b3c0bc4c4.bindPopup(popup_bab56f82b47c64819ced7b4395f9b7a3)
+        ;
+
+        
+    
+    
+            var circle_marker_c5a74be021ca8ad97ae22e97fa00ebf7 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_9aefa914d2e3ece28bcbee9a68030c0c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ae954199ac0e218121c4ee7473db55d7 = $(`<div id="html_ae954199ac0e218121c4ee7473db55d7" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Autohaus BMW</b><br>       <b>Address:</b> Autohaus BMW, South Hanley Road, St. Louis, MO, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut Pack &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 11     </div>     </div>`)[0];
+            popup_9aefa914d2e3ece28bcbee9a68030c0c.setContent(html_ae954199ac0e218121c4ee7473db55d7);
+        
+
+        circle_marker_c5a74be021ca8ad97ae22e97fa00ebf7.bindPopup(popup_9aefa914d2e3ece28bcbee9a68030c0c)
+        ;
+
+        
+    
+    
+            var circle_marker_04d07b6a721795c1d6707fff51a71486 = L.circleMarker(
+                [38.9517, -92.3341],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_76212d22678b8495dc0f4e6961fc0c97 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_109c8e2b3655363edf631f36da5fe263 = $(`<div id="html_109c8e2b3655363edf631f36da5fe263" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>BMW of Columbia</b><br>       <b>Address:</b> 1900 Interstate 70 Dr SW, Columbia, MO 65203<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut Pack &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 21     </div>     </div>`)[0];
+            popup_76212d22678b8495dc0f4e6961fc0c97.setContent(html_109c8e2b3655363edf631f36da5fe263);
+        
+
+        circle_marker_04d07b6a721795c1d6707fff51a71486.bindPopup(popup_76212d22678b8495dc0f4e6961fc0c97)
+        ;
+
+        
+    
+    
+            var circle_marker_819d9de54ba6615a315e30f7edd2242c = L.circleMarker(
+                [38.597, -90.5093],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_7559ee40d4d08ace77d82141909edec7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_6d4f38c3411dc31638c1b62a9e5a4b7a = $(`<div id="html_6d4f38c3411dc31638c1b62a9e5a4b7a" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>BMW of West St. Louis</b><br>       <b>Address:</b> 14417 Manchester Rd, Manchester, MO 63011<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> Flyout<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 16     </div>     </div>`)[0];
+            popup_7559ee40d4d08ace77d82141909edec7.setContent(html_6d4f38c3411dc31638c1b62a9e5a4b7a);
+        
+
+        circle_marker_819d9de54ba6615a315e30f7edd2242c.bindPopup(popup_7559ee40d4d08ace77d82141909edec7)
+        ;
+
+        
+    
+    
+            var circle_marker_f75b1d5f8cdc33f48910de94aacce85e = L.circleMarker(
+                [38.5926, -90.5871],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_83b87c1a8f7ee9287149b6af6681eef8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f607c61736ce59c8d36cd7c153f488e9 = $(`<div id="html_f607c61736ce59c8d36cd7c153f488e9" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito Automotive Group</b><br>       <b>Address:</b> 15736 Manchester Rd, Ellisville, MO 63011, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_83b87c1a8f7ee9287149b6af6681eef8.setContent(html_f607c61736ce59c8d36cd7c153f488e9);
+        
+
+        circle_marker_f75b1d5f8cdc33f48910de94aacce85e.bindPopup(popup_83b87c1a8f7ee9287149b6af6681eef8)
+        ;
+
+        
+    
+    
+            var circle_marker_b3b03842a939ba5bf5469bc61e3a6325 = L.circleMarker(
+                [38.8003, -90.6265],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_09483ed9b0053292f6bd0001a219deed = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d10e4ed77faf21dc0b28641fbc5ed72c = $(`<div id="html_d10e4ed77faf21dc0b28641fbc5ed72c" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito Cadillac</b><br>       <b>Address:</b> Bommarito Cadillac, I-70 North Outer Road, St. Peters, MO, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut Pack &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 16     </div>     </div>`)[0];
+            popup_09483ed9b0053292f6bd0001a219deed.setContent(html_d10e4ed77faf21dc0b28641fbc5ed72c);
+        
+
+        circle_marker_b3b03842a939ba5bf5469bc61e3a6325.bindPopup(popup_09483ed9b0053292f6bd0001a219deed)
+        ;
+
+        
+    
+    
+            var circle_marker_65f0595516fdc8faf2a8541397dd5aad = L.circleMarker(
+                [38.7714, -90.3701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_449f07b791c1b72e29a065aace103295 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ea3f701d0b3107661909fb206f3fcd06 = $(`<div id="html_ea3f701d0b3107661909fb206f3fcd06" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito Ford</b><br>       <b>Address:</b> 675 Dunn Road, Hazelwood, MO 63042, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_449f07b791c1b72e29a065aace103295.setContent(html_ea3f701d0b3107661909fb206f3fcd06);
+        
+
+        circle_marker_65f0595516fdc8faf2a8541397dd5aad.bindPopup(popup_449f07b791c1b72e29a065aace103295)
+        ;
+
+        
+    
+    
+            var circle_marker_5755d07e0d3f1676ef767425adf0eaf3 = L.circleMarker(
+                [38.7714, -90.3701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_2218a7aa664e0492bc42f3ebaf512fc1 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_753ea6d02cc34c001086afaadd9eea68 = $(`<div id="html_753ea6d02cc34c001086afaadd9eea68" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito Honda</b><br>       <b>Address:</b> 330 Brookes Drive, Hazelwood, MO 63042<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_2218a7aa664e0492bc42f3ebaf512fc1.setContent(html_753ea6d02cc34c001086afaadd9eea68);
+        
+
+        circle_marker_5755d07e0d3f1676ef767425adf0eaf3.bindPopup(popup_2218a7aa664e0492bc42f3ebaf512fc1)
+        ;
+
+        
+    
+    
+            var circle_marker_8fcc2cadab185fd9ff07652f23f94f51 = L.circleMarker(
+                [38.5926, -90.5871],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_ea0c4fb598dd9f926b7e753c71f0e22f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7606504bcbe2fb76220beb01c6b75968 = $(`<div id="html_7606504bcbe2fb76220beb01c6b75968" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito Infiniti</b><br>       <b>Address:</b> 15700 Manchester Road, Ellisville, MO 63011, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 5     </div>     </div>`)[0];
+            popup_ea0c4fb598dd9f926b7e753c71f0e22f.setContent(html_7606504bcbe2fb76220beb01c6b75968);
+        
+
+        circle_marker_8fcc2cadab185fd9ff07652f23f94f51.bindPopup(popup_ea0c4fb598dd9f926b7e753c71f0e22f)
+        ;
+
+        
+    
+    
+            var circle_marker_00c4871432be32ed1ea21793ab066601 = L.circleMarker(
+                [38.8003, -90.6265],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_cae932d6f1f91f53e92a4469377e2976 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_155546193af8a391cac3e7f0a650ee4e = $(`<div id="html_155546193af8a391cac3e7f0a650ee4e" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito Mazda St. Peters</b><br>       <b>Address:</b> Bommarito Mazda of St. Peters, 4190 I-70 North Outer Road, St. Peters, MO 63376, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 2     </div>     </div>`)[0];
+            popup_cae932d6f1f91f53e92a4469377e2976.setContent(html_155546193af8a391cac3e7f0a650ee4e);
+        
+
+        circle_marker_00c4871432be32ed1ea21793ab066601.bindPopup(popup_cae932d6f1f91f53e92a4469377e2976)
+        ;
+
+        
+    
+    
+            var circle_marker_2a62f9d5978a764cbd45e267df73925d = L.circleMarker(
+                [38.7714, -90.3701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_1bf72993181a8b02fd6c8c9fbc0e3020 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9b41cbbd8696acec9c65cf69a4c8add9 = $(`<div id="html_9b41cbbd8696acec9c65cf69a4c8add9" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito Nissan</b><br>       <b>Address:</b> 661 Dunn Rd, Hazelwood, MO 63042, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 2     </div>     </div>`)[0];
+            popup_1bf72993181a8b02fd6c8c9fbc0e3020.setContent(html_9b41cbbd8696acec9c65cf69a4c8add9);
+        
+
+        circle_marker_2a62f9d5978a764cbd45e267df73925d.bindPopup(popup_1bf72993181a8b02fd6c8c9fbc0e3020)
+        ;
+
+        
+    
+    
+            var circle_marker_06bb39b375891941195cf1daba61c358 = L.circleMarker(
+                [38.5953, -90.5462],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_4153f02fb5685452df63fd6ff19a3f64 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5dda8f5a3ed9a35f21c0b04225e35070 = $(`<div id="html_5dda8f5a3ed9a35f21c0b04225e35070" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito Nissan West</b><br>       <b>Address:</b> 14747 Manchester Rd, Ballwin, MO 63011, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 12     </div>     </div>`)[0];
+            popup_4153f02fb5685452df63fd6ff19a3f64.setContent(html_5dda8f5a3ed9a35f21c0b04225e35070);
+        
+
+        circle_marker_06bb39b375891941195cf1daba61c358.bindPopup(popup_4153f02fb5685452df63fd6ff19a3f64)
+        ;
+
+        
+    
+    
+            var circle_marker_1b3eed9331533aaf5e6da92d785517ff = L.circleMarker(
+                [38.7714, -90.3701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_d86950caf18a0f0473e13402cc4ac5e4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3f563eab713b4eed9a0ccf4612868e86 = $(`<div id="html_3f563eab713b4eed9a0ccf4612868e86" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito Toyota</b><br>       <b>Address:</b> Bommarito Toyota, 9095 Dunn Road, Hazelwood, MO, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 1 &nbsp; <b>Open Deals:</b> 7     </div>     </div>`)[0];
+            popup_d86950caf18a0f0473e13402cc4ac5e4.setContent(html_3f563eab713b4eed9a0ccf4612868e86);
+        
+
+        circle_marker_1b3eed9331533aaf5e6da92d785517ff.bindPopup(popup_d86950caf18a0f0473e13402cc4ac5e4)
+        ;
+
+        
+    
+    
+            var circle_marker_022dc43fc77e254c86aabb0932c5124b = L.circleMarker(
+                [38.7714, -90.3701],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_9b9226501df06bbcef44817a8ba02363 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_825fbc5576c5f3cdb3fc042af146b7b1 = $(`<div id="html_825fbc5576c5f3cdb3fc042af146b7b1" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito Volkswagen</b><br>       <b>Address:</b> 400 Brookes Drive, Hazelwood, MO 63042, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 5     </div>     </div>`)[0];
+            popup_9b9226501df06bbcef44817a8ba02363.setContent(html_825fbc5576c5f3cdb3fc042af146b7b1);
+        
+
+        circle_marker_022dc43fc77e254c86aabb0932c5124b.bindPopup(popup_9b9226501df06bbcef44817a8ba02363)
+        ;
+
+        
+    
+    
+            var circle_marker_cedad749a070dabe37365bd5434e39b4 = L.circleMarker(
+                [38.8003, -90.6265],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_a2c6d580f02f2693857fa89cd266413d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d476dc1a31948a53ab5b82811aa6a2da = $(`<div id="html_d476dc1a31948a53ab5b82811aa6a2da" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito Volkswagen of St. Peters</b><br>       <b>Address:</b> 4190 I‑70 North Outer Road, St. Peters, MO 63376<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 6     </div>     </div>`)[0];
+            popup_a2c6d580f02f2693857fa89cd266413d.setContent(html_d476dc1a31948a53ab5b82811aa6a2da);
+        
+
+        circle_marker_cedad749a070dabe37365bd5434e39b4.bindPopup(popup_a2c6d580f02f2693857fa89cd266413d)
+        ;
+
+        
+    
+    
+            var circle_marker_a48839d1d3620b8ab90096cf5b57b9aa = L.circleMarker(
+                [38.5926, -90.5871],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_7d7084df4c67c48aa0662bbe337638c7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d9aa1a42cd24da7066b737b7133cd6f4 = $(`<div id="html_d9aa1a42cd24da7066b737b7133cd6f4" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Bommarito West County Pre-Owned</b><br>       <b>Address:</b> 15736 Manchester Road, Ellisville, MO 63011<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> Flyout<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 9     </div>     </div>`)[0];
+            popup_7d7084df4c67c48aa0662bbe337638c7.setContent(html_d9aa1a42cd24da7066b737b7133cd6f4);
+        
+
+        circle_marker_a48839d1d3620b8ab90096cf5b57b9aa.bindPopup(popup_7d7084df4c67c48aa0662bbe337638c7)
+        ;
+
+        
+    
+    
+            var circle_marker_202b6320f6c1b4881335993b019b0649 = L.circleMarker(
+                [38.5767, -92.1735],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_b3db7d6b96bf0ea5658d7dc82e9febdf = L.popup({"maxWidth": "100%"});
+
+        
+            var html_16342379500821aa42db425b5f142166 = $(`<div id="html_16342379500821aa42db425b5f142166" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Capital City CDJR</b><br>       <b>Address:</b> 3201 Missouri Blvd, Jefferson City, MO 65109<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 1 &nbsp; <b>Open Deals:</b> 14     </div>     </div>`)[0];
+            popup_b3db7d6b96bf0ea5658d7dc82e9febdf.setContent(html_16342379500821aa42db425b5f142166);
+        
+
+        circle_marker_202b6320f6c1b4881335993b019b0649.bindPopup(popup_b3db7d6b96bf0ea5658d7dc82e9febdf)
+        ;
+
+        
+    
+    
+            var circle_marker_35278bf43bccf2529ead053e8a1eac4d = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_c91f37427040a58531de7f721ee022b3 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c2e8cee7f44a80acb7d4b5c27530d25d = $(`<div id="html_c2e8cee7f44a80acb7d4b5c27530d25d" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Cavallino Rosso St. Louis (Ferrari)</b><br>       <b>Address:</b> 3000 S Hanley Rd, St. Louis, MO 63143<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_c91f37427040a58531de7f721ee022b3.setContent(html_c2e8cee7f44a80acb7d4b5c27530d25d);
+        
+
+        circle_marker_35278bf43bccf2529ead053e8a1eac4d.bindPopup(popup_c91f37427040a58531de7f721ee022b3)
+        ;
+
+        
+    
+    
+            var circle_marker_0b3c0976a6e6f2f4feeaeca4769087d7 = L.circleMarker(
+                [38.9517, -92.3341],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_0ea05070fbf13a0c035808edd98f2558 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_dbf885e312e9022422ac0f09490655d2 = $(`<div id="html_dbf885e312e9022422ac0f09490655d2" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>CDJR of Columbia</b><br>       <b>Address:</b> 500 Vandiver Dr, Columbia, MO 65202, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 26     </div>     </div>`)[0];
+            popup_0ea05070fbf13a0c035808edd98f2558.setContent(html_dbf885e312e9022422ac0f09490655d2);
+        
+
+        circle_marker_0b3c0976a6e6f2f4feeaeca4769087d7.bindPopup(popup_0ea05070fbf13a0c035808edd98f2558)
+        ;
+
+        
+    
+    
+            var circle_marker_285492398c2f9af1cb2d2b3ed1b646e6 = L.circleMarker(
+                [38.7839, -90.4812],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_ff9cdbd7920ce9ad33669ed36184a4b5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ddecce64bb78f0e1e0dfb87d74537398 = $(`<div id="html_ddecce64bb78f0e1e0dfb87d74537398" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Clement</b><br>       <b>Address:</b> 190 Spring Dr, St Charles, MO 63303<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_ff9cdbd7920ce9ad33669ed36184a4b5.setContent(html_ddecce64bb78f0e1e0dfb87d74537398);
+        
+
+        circle_marker_285492398c2f9af1cb2d2b3ed1b646e6.bindPopup(popup_ff9cdbd7920ce9ad33669ed36184a4b5)
+        ;
+
+        
+    
+    
+            var circle_marker_c9b1221590b56e1689dcea5d84a5df54 = L.circleMarker(
+                [38.9517, -92.3341],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_8b28b7dbc0226d169ebfb6370eec330a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_555d5e72728e6de1ae487c4ac08597e0 = $(`<div id="html_555d5e72728e6de1ae487c4ac08597e0" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Columbia Honda</b><br>       <b>Address:</b> 1650 Heriford Rd, Columbia, MO 65202<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> None &nbsp; <b>Used Coverage:</b> Flyout<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 20     </div>     </div>`)[0];
+            popup_8b28b7dbc0226d169ebfb6370eec330a.setContent(html_555d5e72728e6de1ae487c4ac08597e0);
+        
+
+        circle_marker_c9b1221590b56e1689dcea5d84a5df54.bindPopup(popup_8b28b7dbc0226d169ebfb6370eec330a)
+        ;
+
+        
+    
+    
+            var circle_marker_c31d4c239513197773f9db2525f78ebd = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_41be6ee327a47b18a0e65fb5d13f6af9 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ac922ffe7664a54c3e975a7f561f7135 = $(`<div id="html_ac922ffe7664a54c3e975a7f561f7135" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Dave Sinclair Ford</b><br>       <b>Address:</b> 7466 S Lindbergh Blvd, St. Louis, MO 63125<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_41be6ee327a47b18a0e65fb5d13f6af9.setContent(html_ac922ffe7664a54c3e975a7f561f7135);
+        
+
+        circle_marker_c31d4c239513197773f9db2525f78ebd.bindPopup(popup_41be6ee327a47b18a0e65fb5d13f6af9)
+        ;
+
+        
+    
+    
+            var circle_marker_0348dabb53c149be2ff6b55033b6de6c = L.circleMarker(
+                [38.5953, -90.5462],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_ebe4d69b92ca2757bf3e1712fa296daa = L.popup({"maxWidth": "100%"});
+
+        
+            var html_51e8b58f7e9a4f27452706ded3cc7f43 = $(`<div id="html_51e8b58f7e9a4f27452706ded3cc7f43" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Dave Sinclair Lincoln</b><br>       <b>Address:</b> 13980 Manchester Rd, Ballwin, MO 63011<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut Pack &nbsp; <b>Used Coverage:</b> Flyout<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 19     </div>     </div>`)[0];
+            popup_ebe4d69b92ca2757bf3e1712fa296daa.setContent(html_51e8b58f7e9a4f27452706ded3cc7f43);
+        
+
+        circle_marker_0348dabb53c149be2ff6b55033b6de6c.bindPopup(popup_ebe4d69b92ca2757bf3e1712fa296daa)
+        ;
+
+        
+    
+    
+            var circle_marker_d2016d18eea2eecb58a567cedc54bd56 = L.circleMarker(
+                [38.8003, -90.6265],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_deac762be01e4a77d1330abcb8f102ab = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7a7790ad20e33cdbe0d725d01684a344 = $(`<div id="html_7a7790ad20e33cdbe0d725d01684a344" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Dave Sinclair Lincoln St. Peters</b><br>       <b>Address:</b> 4760 N Service Rd, St Peters, MO 63376<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut Pack &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 12     </div>     </div>`)[0];
+            popup_deac762be01e4a77d1330abcb8f102ab.setContent(html_7a7790ad20e33cdbe0d725d01684a344);
+        
+
+        circle_marker_d2016d18eea2eecb58a567cedc54bd56.bindPopup(popup_deac762be01e4a77d1330abcb8f102ab)
+        ;
+
+        
+    
+    
+            var circle_marker_6c81f8fba5204dbaeaaf955f72088de7 = L.circleMarker(
+                [38.5953, -90.5462],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_ff51b462fd80288a5ac21716d623a91f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_166e5d30b05f33a7400c69dd6d4cf8f4 = $(`<div id="html_166e5d30b05f33a7400c69dd6d4cf8f4" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Dean Team Hyundai</b><br>       <b>Address:</b> 14754 Manchester Rd, Ballwin, MO 63011<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 7     </div>     </div>`)[0];
+            popup_ff51b462fd80288a5ac21716d623a91f.setContent(html_166e5d30b05f33a7400c69dd6d4cf8f4);
+        
+
+        circle_marker_6c81f8fba5204dbaeaaf955f72088de7.bindPopup(popup_ff51b462fd80288a5ac21716d623a91f)
+        ;
+
+        
+    
+    
+            var circle_marker_8e0a4b096082ccc593b09698c7437b97 = L.circleMarker(
+                [38.5953, -90.5462],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_4f9f90c29b3dc9cea69e3ae70f7d7e18 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_620a671e7b44550bad056b4eb48b8d9a = $(`<div id="html_620a671e7b44550bad056b4eb48b8d9a" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Dean Team Used</b><br>       <b>Address:</b> 15121 Manchester Rd, Ballwin, MO 63011, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_4f9f90c29b3dc9cea69e3ae70f7d7e18.setContent(html_620a671e7b44550bad056b4eb48b8d9a);
+        
+
+        circle_marker_8e0a4b096082ccc593b09698c7437b97.bindPopup(popup_4f9f90c29b3dc9cea69e3ae70f7d7e18)
+        ;
+
+        
+    
+    
+            var circle_marker_3d2dc4891fb9a756bc01c3403b1d9422 = L.circleMarker(
+                [38.5834, -90.406],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_d5d4043da4926dc7fd1f16422b4e8e68 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a317eaa04a81fe7d02ef345cfa6f5cbd = $(`<div id="html_a317eaa04a81fe7d02ef345cfa6f5cbd" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Dean Team Volkswagen</b><br>       <b>Address:</b> 10205 Manchester Rd, Kirkwood, MO 63122, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_d5d4043da4926dc7fd1f16422b4e8e68.setContent(html_a317eaa04a81fe7d02ef345cfa6f5cbd);
+        
+
+        circle_marker_3d2dc4891fb9a756bc01c3403b1d9422.bindPopup(popup_d5d4043da4926dc7fd1f16422b4e8e68)
+        ;
+
+        
+    
+    
+            var circle_marker_be5be0aada85d879bda97fc6687b37b1 = L.circleMarker(
+                [38.5953, -90.5462],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_b40daa7b5eed14a7ee3392cb878b22b7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3db6c2591eb86da057884743b72539e5 = $(`<div id="html_3db6c2591eb86da057884743b72539e5" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Dean Team VW</b><br>       <b>Address:</b> 15121 Manchester Rd, Ballwin, MO 63011<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_b40daa7b5eed14a7ee3392cb878b22b7.setContent(html_3db6c2591eb86da057884743b72539e5);
+        
+
+        circle_marker_be5be0aada85d879bda97fc6687b37b1.bindPopup(popup_b40daa7b5eed14a7ee3392cb878b22b7)
+        ;
+
+        
+    
+    
+            var circle_marker_e84a0d274e5fd922d1abba3578fd30c0 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_7a0006e620c5d9ba555a05fc100b080d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b3fbda8e6ae54e2864a4ef35cfedf31e = $(`<div id="html_b3fbda8e6ae54e2864a4ef35cfedf31e" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Don Brown Chevrolet</b><br>       <b>Address:</b> 2244 S Kingshighway Blvd, St. Louis, MO 63110<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 4     </div>     </div>`)[0];
+            popup_7a0006e620c5d9ba555a05fc100b080d.setContent(html_b3fbda8e6ae54e2864a4ef35cfedf31e);
+        
+
+        circle_marker_e84a0d274e5fd922d1abba3578fd30c0.bindPopup(popup_7a0006e620c5d9ba555a05fc100b080d)
+        ;
+
+        
+    
+    
+            var circle_marker_5312c990baaf04d4ca0a1a2a472d1be1 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_f404fc5b47d8ad0b75f599f6f3522c89 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f44d1bed7eccd1afb18f5bb1df666250 = $(`<div id="html_f44d1bed7eccd1afb18f5bb1df666250" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Frank Leta Acura</b><br>       <b>Address:</b> 11777 Tesson Ferry Rd, St. Louis, MO 63128, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 5     </div>     </div>`)[0];
+            popup_f404fc5b47d8ad0b75f599f6f3522c89.setContent(html_f44d1bed7eccd1afb18f5bb1df666250);
+        
+
+        circle_marker_5312c990baaf04d4ca0a1a2a472d1be1.bindPopup(popup_f404fc5b47d8ad0b75f599f6f3522c89)
+        ;
+
+        
+    
+    
+            var circle_marker_84ca2dd6ee8bc64aee8ac03432435712 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_5bef05648844b92ceb30cd9f1ad35612 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_581061588e382256bdbed827e5e96ab7 = $(`<div id="html_581061588e382256bdbed827e5e96ab7" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Frank Leta Honda</b><br>       <b>Address:</b> 11777 Tesson Ferry Rd, St. Louis, MO 63128<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> None &nbsp; <b>Used Coverage:</b> Flyout<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 21     </div>     </div>`)[0];
+            popup_5bef05648844b92ceb30cd9f1ad35612.setContent(html_581061588e382256bdbed827e5e96ab7);
+        
+
+        circle_marker_84ca2dd6ee8bc64aee8ac03432435712.bindPopup(popup_5bef05648844b92ceb30cd9f1ad35612)
+        ;
+
+        
+    
+    
+            var circle_marker_acfa355e33b54c576211e2fe3a3aff5d = L.circleMarker(
+                [38.8467, -91.9479],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_f764fd2c2ed41cdce030ade1d905c9bb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_418056f03d0db645ca4c42fa1a594b9c = $(`<div id="html_418056f03d0db645ca4c42fa1a594b9c" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Fulton Ford</b><br>       <b>Address:</b> 1202 US-54 BUS, Fulton, MO 65251, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_f764fd2c2ed41cdce030ade1d905c9bb.setContent(html_418056f03d0db645ca4c42fa1a594b9c);
+        
+
+        circle_marker_acfa355e33b54c576211e2fe3a3aff5d.bindPopup(popup_f764fd2c2ed41cdce030ade1d905c9bb)
+        ;
+
+        
+    
+    
+            var circle_marker_400f004e310100f25b15ebc6caab4930 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_b73f2b40ccfd361c14f5bc2d1066ab3f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_bc65da5b0686b967833f6bed35d1c1a9 = $(`<div id="html_bc65da5b0686b967833f6bed35d1c1a9" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Genesis of South St. Louis County (Suntrup)</b><br>       <b>Address:</b> 5926 S Lindbergh Blvd, St. Louis, MO 63123, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 1     </div>     </div>`)[0];
+            popup_b73f2b40ccfd361c14f5bc2d1066ab3f.setContent(html_bc65da5b0686b967833f6bed35d1c1a9);
+        
+
+        circle_marker_400f004e310100f25b15ebc6caab4930.bindPopup(popup_b73f2b40ccfd361c14f5bc2d1066ab3f)
+        ;
+
+        
+    
+    
+            var circle_marker_644a7bc2d91e56e6f02869aeed57f8de = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_bb4a5c90465a65a5806b951ba822b726 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d032365a8b98f65446ace2e5592256d4 = $(`<div id="html_d032365a8b98f65446ace2e5592256d4" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Glendale CDJR</b><br>       <b>Address:</b> 10070 Manchester Rd, St. Louis, MO 63122, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> None &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 28     </div>     </div>`)[0];
+            popup_bb4a5c90465a65a5806b951ba822b726.setContent(html_d032365a8b98f65446ace2e5592256d4);
+        
+
+        circle_marker_644a7bc2d91e56e6f02869aeed57f8de.bindPopup(popup_bb4a5c90465a65a5806b951ba822b726)
+        ;
+
+        
+    
+    
+            var circle_marker_9e30a3977a82cc1909c4205ae9c38adc = L.circleMarker(
+                [38.597, -90.5093],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_571e5f27f3d8cb109eaa213faaf8bb89 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a1fbbeec668976741188954bf98505b1 = $(`<div id="html_a1fbbeec668976741188954bf98505b1" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Honda of Frontenac</b><br>       <b>Address:</b> 14116 Manchester Rd, Manchester, MO 63011<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 17     </div>     </div>`)[0];
+            popup_571e5f27f3d8cb109eaa213faaf8bb89.setContent(html_a1fbbeec668976741188954bf98505b1);
+        
+
+        circle_marker_9e30a3977a82cc1909c4205ae9c38adc.bindPopup(popup_571e5f27f3d8cb109eaa213faaf8bb89)
+        ;
+
+        
+    
+    
+            var circle_marker_3d81fdedc1813404d5314a3cc734af2f = L.circleMarker(
+                [38.597, -90.5093],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_6cd55cb67f61aa5ace17ad7a53780ebe = L.popup({"maxWidth": "100%"});
+
+        
+            var html_10428c9c417c1763d0ea988f00b68b1c = $(`<div id="html_10428c9c417c1763d0ea988f00b68b1c" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>HW KIA</b><br>       <b>Address:</b> 14116 Manchester Rd, Manchester, MO 63021, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 16     </div>     </div>`)[0];
+            popup_6cd55cb67f61aa5ace17ad7a53780ebe.setContent(html_10428c9c417c1763d0ea988f00b68b1c);
+        
+
+        circle_marker_3d81fdedc1813404d5314a3cc734af2f.bindPopup(popup_6cd55cb67f61aa5ace17ad7a53780ebe)
+        ;
+
+        
+    
+    
+            var circle_marker_79dec3add2aa445f9d2af72dd30fbcb3 = L.circleMarker(
+                [42.2781, -87.834],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_0d65ad2569036ef292ed5c043c3bf300 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c6396bd93029f88f09d6715f81f730fd = $(`<div id="html_c6396bd93029f88f09d6715f81f730fd" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Imperial Motors Jaguar of Lake Bluff</b><br>       <b>Address:</b> 150 Skokie Hwy, Lake Bluff, IL 60044, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_0d65ad2569036ef292ed5c043c3bf300.setContent(html_c6396bd93029f88f09d6715f81f730fd);
+        
+
+        circle_marker_79dec3add2aa445f9d2af72dd30fbcb3.bindPopup(popup_0d65ad2569036ef292ed5c043c3bf300)
+        ;
+
+        
+    
+    
+            var circle_marker_5ffcfed15b7d868009b1922a997ddbff = L.circleMarker(
+                [38.5923, -89.9112],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_5b1d6934fe5a493dc8152250ab42b07e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_cbca2d356f1f9a3cfd52b4f15402245f = $(`<div id="html_cbca2d356f1f9a3cfd52b4f15402245f" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Jack Schmitt Chevrolet O'Fallon</b><br>       <b>Address:</b> 127 Regency Park, O'Fallon, IL 62269<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_5b1d6934fe5a493dc8152250ab42b07e.setContent(html_cbca2d356f1f9a3cfd52b4f15402245f);
+        
+
+        circle_marker_5ffcfed15b7d868009b1922a997ddbff.bindPopup(popup_5b1d6934fe5a493dc8152250ab42b07e)
+        ;
+
+        
+    
+    
+            var circle_marker_d0e7d4fcda7245066ea06d0500bc42d9 = L.circleMarker(
+                [38.6703, -90.0121],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_0635beb24fbcad824bad83ec382492a7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f220b884fbbed7fec424bc7a2942e686 = $(`<div id="html_f220b884fbbed7fec424bc7a2942e686" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Jack Schmitt Ford</b><br>       <b>Address:</b> 1820 Vandalia St, Collinsville, IL 62234<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 6     </div>     </div>`)[0];
+            popup_0635beb24fbcad824bad83ec382492a7.setContent(html_f220b884fbbed7fec424bc7a2942e686);
+        
+
+        circle_marker_d0e7d4fcda7245066ea06d0500bc42d9.bindPopup(popup_0635beb24fbcad824bad83ec382492a7)
+        ;
+
+        
+    
+    
+            var circle_marker_e10c1f456d8536172d3bcc092cee1bc3 = L.circleMarker(
+                [38.5767, -92.1735],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_3ae598db7fdc602d9a8f00e966079089 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0ea68dc4e2b80bdcef741b21b1f6b3dc = $(`<div id="html_0ea68dc4e2b80bdcef741b21b1f6b3dc" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Joe Machens Capital City Ford</b><br>       <b>Address:</b> 807 Southwest Blvd, Jefferson City, MO 65109, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 8     </div>     </div>`)[0];
+            popup_3ae598db7fdc602d9a8f00e966079089.setContent(html_0ea68dc4e2b80bdcef741b21b1f6b3dc);
+        
+
+        circle_marker_e10c1f456d8536172d3bcc092cee1bc3.bindPopup(popup_3ae598db7fdc602d9a8f00e966079089)
+        ;
+
+        
+    
+    
+            var circle_marker_2a5f118f1953c75146c74ab4ad247e0c = L.circleMarker(
+                [38.9517, -92.3341],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_72c1aebe66da535bbda59fdc51ab6b3c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_354dcf8292de646e647625f2651d1dc3 = $(`<div id="html_354dcf8292de646e647625f2651d1dc3" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Joe Machens CDJR</b><br>       <b>Address:</b> 1310 Vandiver Drive, Columbia, MO, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_72c1aebe66da535bbda59fdc51ab6b3c.setContent(html_354dcf8292de646e647625f2651d1dc3);
+        
+
+        circle_marker_2a5f118f1953c75146c74ab4ad247e0c.bindPopup(popup_72c1aebe66da535bbda59fdc51ab6b3c)
+        ;
+
+        
+    
+    
+            var circle_marker_13a56dd7ebb677811d67d2e88825afe6 = L.circleMarker(
+                [38.9517, -92.3341],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_e5a3807bd4c868c0c11e8b7eef80cbe4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_36672cd87d71fe88a62a120e4bf9f71e = $(`<div id="html_36672cd87d71fe88a62a120e4bf9f71e" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Joe Machens Ford - Columbia</b><br>       <b>Address:</b> 1911 W Worley St, Columbia, MO, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 11     </div>     </div>`)[0];
+            popup_e5a3807bd4c868c0c11e8b7eef80cbe4.setContent(html_36672cd87d71fe88a62a120e4bf9f71e);
+        
+
+        circle_marker_13a56dd7ebb677811d67d2e88825afe6.bindPopup(popup_e5a3807bd4c868c0c11e8b7eef80cbe4)
+        ;
+
+        
+    
+    
+            var circle_marker_ba3274e78c38027a8f4561b2a6471348 = L.circleMarker(
+                [38.9517, -92.3341],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_6115895bf95eb1fbb965ca625ec162cf = L.popup({"maxWidth": "100%"});
+
+        
+            var html_43694f41b288db00afca7137d9baaa0c = $(`<div id="html_43694f41b288db00afca7137d9baaa0c" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Joe Machens Hyundai</b><br>       <b>Address:</b> 1300 Vandiver Dr, Columbia, MO 65202, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 11     </div>     </div>`)[0];
+            popup_6115895bf95eb1fbb965ca625ec162cf.setContent(html_43694f41b288db00afca7137d9baaa0c);
+        
+
+        circle_marker_ba3274e78c38027a8f4561b2a6471348.bindPopup(popup_6115895bf95eb1fbb965ca625ec162cf)
+        ;
+
+        
+    
+    
+            var circle_marker_8f9e3acd9dd46af16ce934d1030d5e70 = L.circleMarker(
+                [38.9517, -92.3341],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_2c28590de2d6b29f50d9983cb9ac2685 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_87f8a01495ec0fa21f45f3671e6cdd47 = $(`<div id="html_87f8a01495ec0fa21f45f3671e6cdd47" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Joe Machens Nissan</b><br>       <b>Address:</b> 201 Nebraska Ave, Columbia, MO 65203, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 37     </div>     </div>`)[0];
+            popup_2c28590de2d6b29f50d9983cb9ac2685.setContent(html_87f8a01495ec0fa21f45f3671e6cdd47);
+        
+
+        circle_marker_8f9e3acd9dd46af16ce934d1030d5e70.bindPopup(popup_2c28590de2d6b29f50d9983cb9ac2685)
+        ;
+
+        
+    
+    
+            var circle_marker_a743363714bb2f1475a73b11d74cbfdb = L.circleMarker(
+                [38.9517, -92.3341],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_b0cce42184f8eb30dca4a4b359d5cd6b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d7b4805966ede753b77e25817d950d12 = $(`<div id="html_d7b4805966ede753b77e25817d950d12" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Joe Machens Toyota</b><br>       <b>Address:</b> 1180 Vandiver Dr, Columbia, MO 65202, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 25     </div>     </div>`)[0];
+            popup_b0cce42184f8eb30dca4a4b359d5cd6b.setContent(html_d7b4805966ede753b77e25817d950d12);
+        
+
+        circle_marker_a743363714bb2f1475a73b11d74cbfdb.bindPopup(popup_b0cce42184f8eb30dca4a4b359d5cd6b)
+        ;
+
+        
+    
+    
+            var circle_marker_18b86e6040bd60dec4b33ab5c32b22f9 = L.circleMarker(
+                [38.9517, -92.3341],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_980927efd1effb412077231d5973dd09 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_927e5d7e1faac1f9b9d9b05211b36296 = $(`<div id="html_927e5d7e1faac1f9b9d9b05211b36296" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>KIA Of Columbia</b><br>       <b>Address:</b> 710 Business Loop 70 West, Columbia, MO 65203, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 31     </div>     </div>`)[0];
+            popup_980927efd1effb412077231d5973dd09.setContent(html_927e5d7e1faac1f9b9d9b05211b36296);
+        
+
+        circle_marker_18b86e6040bd60dec4b33ab5c32b22f9.bindPopup(popup_980927efd1effb412077231d5973dd09)
+        ;
+
+        
+    
+    
+            var circle_marker_0308ce57b5980a5c3bd06d4484a75cde = L.circleMarker(
+                [38.6609, -90.4226],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_ccc736dc0f5916f7cfa9d51668440390 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4f4fd1a4af014cec501b48490d7529aa = $(`<div id="html_4f4fd1a4af014cec501b48490d7529aa" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Land Rover St. Louis</b><br>       <b>Address:</b> 11654 Olive Blvd, Creve Coeur, MO 63141<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 1     </div>     </div>`)[0];
+            popup_ccc736dc0f5916f7cfa9d51668440390.setContent(html_4f4fd1a4af014cec501b48490d7529aa);
+        
+
+        circle_marker_0308ce57b5980a5c3bd06d4484a75cde.bindPopup(popup_ccc736dc0f5916f7cfa9d51668440390)
+        ;
+
+        
+    
+    
+            var circle_marker_49089cfd8ac3fbae813668bf1df0bd14 = L.circleMarker(
+                [41.7606, -88.3201],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_dc0109e60461f4acef10bf769a33885d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_42e6b6891dc50d72dbe5e867f7387939 = $(`<div id="html_42e6b6891dc50d72dbe5e867f7387939" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Mayse Automotive</b><br>       <b>Address:</b> 2032 S Elliott Ave, Aurora, MO 65605, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 2     </div>     </div>`)[0];
+            popup_dc0109e60461f4acef10bf769a33885d.setContent(html_42e6b6891dc50d72dbe5e867f7387939);
+        
+
+        circle_marker_49089cfd8ac3fbae813668bf1df0bd14.bindPopup(popup_dc0109e60461f4acef10bf769a33885d)
+        ;
+
+        
+    
+    
+            var circle_marker_63f4febc8aac65c60a97386250faa1f5 = L.circleMarker(
+                [38.5923, -89.9112],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_795ff0744e63a62831f66e8a4b95db0b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ccd6e8e3aea06a8dd3d77c6ac6d21af9 = $(`<div id="html_ccd6e8e3aea06a8dd3d77c6ac6d21af9" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Mercedes-Benz of Chesterfield</b><br>       <b>Address:</b> 951 Technology Dr, O'Fallon, MO 63368, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 1     </div>     </div>`)[0];
+            popup_795ff0744e63a62831f66e8a4b95db0b.setContent(html_ccd6e8e3aea06a8dd3d77c6ac6d21af9);
+        
+
+        circle_marker_63f4febc8aac65c60a97386250faa1f5.bindPopup(popup_795ff0744e63a62831f66e8a4b95db0b)
+        ;
+
+        
+    
+    
+            var circle_marker_066197597afbbfb7bb56bc5af057df25 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_5493a70fbbf1b2836f684230bdeef383 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b4d0aca60a1a6054a3b94330293c7188 = $(`<div id="html_b4d0aca60a1a6054a3b94330293c7188" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Mercedes-Benz of St. Louis</b><br>       <b>Address:</b> 1048 Hampton Ave, St. Louis, MO 63139<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_5493a70fbbf1b2836f684230bdeef383.setContent(html_b4d0aca60a1a6054a3b94330293c7188);
+        
+
+        circle_marker_066197597afbbfb7bb56bc5af057df25.bindPopup(popup_5493a70fbbf1b2836f684230bdeef383)
+        ;
+
+        
+    
+    
+            var circle_marker_b4928679318a9b9d27110670e349d66d = L.circleMarker(
+                [38.6126, -90.3248],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_6245a2214e0e4d0f3796c800e0b5ca35 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4bca1112df91d4ca2cb97e52dd66bc1a = $(`<div id="html_4bca1112df91d4ca2cb97e52dd66bc1a" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Mini of St. Louis</b><br>       <b>Address:</b> MINI of St Louis, Sunnen Drive, Maplewood, MO, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> Custom &nbsp; <b>Used Coverage:</b> Custom<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 23     </div>     </div>`)[0];
+            popup_6245a2214e0e4d0f3796c800e0b5ca35.setContent(html_4bca1112df91d4ca2cb97e52dd66bc1a);
+        
+
+        circle_marker_b4928679318a9b9d27110670e349d66d.bindPopup(popup_6245a2214e0e4d0f3796c800e0b5ca35)
+        ;
+
+        
+    
+    
+            var circle_marker_a49d465b707d302bb0ca4c9bb26c8039 = L.circleMarker(
+                [38.8906, -90.1843],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_5d27855471b2f98564f0ec11ea48ae85 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2879b4336c5bfebcd1d9aae19bc4c5d7 = $(`<div id="html_2879b4336c5bfebcd1d9aae19bc4c5d7" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Mungenast & Burkard Alton Toyota</b><br>       <b>Address:</b> 850 E Homer M Adams Pkwy, Alton, IL 62002, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 2     </div>     </div>`)[0];
+            popup_5d27855471b2f98564f0ec11ea48ae85.setContent(html_2879b4336c5bfebcd1d9aae19bc4c5d7);
+        
+
+        circle_marker_a49d465b707d302bb0ca4c9bb26c8039.bindPopup(popup_5d27855471b2f98564f0ec11ea48ae85)
+        ;
+
+        
+    
+    
+            var circle_marker_0662de4aabe673ed2a3e497577c945a6 = L.circleMarker(
+                [38.597, -90.5093],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_cee05528cc131ca0ee495a557784a7f1 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b689c61fd5efbc929504969dc8d68aed = $(`<div id="html_b689c61fd5efbc929504969dc8d68aed" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Mungenast Lexus of St. Louis</b><br>       <b>Address:</b> 13700 Manchester Rd, Manchester, MO 63021, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 11     </div>     </div>`)[0];
+            popup_cee05528cc131ca0ee495a557784a7f1.setContent(html_b689c61fd5efbc929504969dc8d68aed);
+        
+
+        circle_marker_0662de4aabe673ed2a3e497577c945a6.bindPopup(popup_cee05528cc131ca0ee495a557784a7f1)
+        ;
+
+        
+    
+    
+            var circle_marker_0570d05a870414792b1fdd75feb255f7 = L.circleMarker(
+                [38.597, -90.5093],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_2e9c83a519957c4e6dbf23dfedb7f718 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7cd5b3ee583ccd61037cbdc75eb4b496 = $(`<div id="html_7cd5b3ee583ccd61037cbdc75eb4b496" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Mungenast St. Louis Acura</b><br>       <b>Address:</b> 13720 Manchester Rd, Manchester, MO 63011<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 7     </div>     </div>`)[0];
+            popup_2e9c83a519957c4e6dbf23dfedb7f718.setContent(html_7cd5b3ee583ccd61037cbdc75eb4b496);
+        
+
+        circle_marker_0570d05a870414792b1fdd75feb255f7.bindPopup(popup_2e9c83a519957c4e6dbf23dfedb7f718)
+        ;
+
+        
+    
+    
+            var circle_marker_52ab513b55e7f590f76a26edeb1b8e3c = L.circleMarker(
+                [38.597, -90.5093],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_b209eb02c5e1b3790d4a5c70499e6bcb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_51bbb3e39c355beea4302dab5c25a09a = $(`<div id="html_51bbb3e39c355beea4302dab5c25a09a" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Mungenast St. Louis Honda</b><br>       <b>Address:</b> 13720 Manchester Rd, Manchester, MO 63011<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_b209eb02c5e1b3790d4a5c70499e6bcb.setContent(html_51bbb3e39c355beea4302dab5c25a09a);
+        
+
+        circle_marker_52ab513b55e7f590f76a26edeb1b8e3c.bindPopup(popup_b209eb02c5e1b3790d4a5c70499e6bcb)
+        ;
+
+        
+    
+    
+            var circle_marker_c25f7ec03dd0f03a73babf949b6eaa78 = L.circleMarker(
+                [38.8003, -90.6265],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_44a823e394fa8a4f8ad71d272e7e74f4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7a952c61a5e1dd1373314d7bd9876d61 = $(`<div id="html_7a952c61a5e1dd1373314d7bd9876d61" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Napleton KIA</b><br>       <b>Address:</b> 4955 Veterans Memorial Parkway, St. Peters, MO 63376, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_44a823e394fa8a4f8ad71d272e7e74f4.setContent(html_7a952c61a5e1dd1373314d7bd9876d61);
+        
+
+        circle_marker_c25f7ec03dd0f03a73babf949b6eaa78.bindPopup(popup_44a823e394fa8a4f8ad71d272e7e74f4)
+        ;
+
+        
+    
+    
+            var circle_marker_181167686f05798336f9e68c2e18ae9c = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_fba48a77e60abd7d32c987fe57a0dedc = L.popup({"maxWidth": "100%"});
+
+        
+            var html_de5d3660ab74a990c686cf970cec13b2 = $(`<div id="html_de5d3660ab74a990c686cf970cec13b2" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Napleton Nissan</b><br>       <b>Address:</b> 10964 Page Ave, St. Louis, MO 63132<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 2     </div>     </div>`)[0];
+            popup_fba48a77e60abd7d32c987fe57a0dedc.setContent(html_de5d3660ab74a990c686cf970cec13b2);
+        
+
+        circle_marker_181167686f05798336f9e68c2e18ae9c.bindPopup(popup_fba48a77e60abd7d32c987fe57a0dedc)
+        ;
+
+        
+    
+    
+            var circle_marker_0921a7f0457a8a1040e7fc21515ba581 = L.circleMarker(
+                [38.8003, -90.6265],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_f07be7b8225d08ae7f716815ab54c711 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b23b21cee5794bc415fc7a0ac214f983 = $(`<div id="html_b23b21cee5794bc415fc7a0ac214f983" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Napleton Off-Lease</b><br>       <b>Address:</b> 4798 N Service Rd, St. Peters, MO 63376, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 1     </div>     </div>`)[0];
+            popup_f07be7b8225d08ae7f716815ab54c711.setContent(html_b23b21cee5794bc415fc7a0ac214f983);
+        
+
+        circle_marker_0921a7f0457a8a1040e7fc21515ba581.bindPopup(popup_f07be7b8225d08ae7f716815ab54c711)
+        ;
+
+        
+    
+    
+            var circle_marker_b1a278394b972379bd57121ba3428fa5 = L.circleMarker(
+                [40.4842, -88.9937],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_7a78946b7754721b934b412594f1c229 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_384b161b6b6ff350cbb8d6287a248599 = $(`<div id="html_384b161b6b6ff350cbb8d6287a248599" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>O'Brien Nissan of Bloomington</b><br>       <b>Address:</b> 2029 Ireland Grove Rd, Bloomington, IL 61704<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 1     </div>     </div>`)[0];
+            popup_7a78946b7754721b934b412594f1c229.setContent(html_384b161b6b6ff350cbb8d6287a248599);
+        
+
+        circle_marker_b1a278394b972379bd57121ba3428fa5.bindPopup(popup_7a78946b7754721b934b412594f1c229)
+        ;
+
+        
+    
+    
+            var circle_marker_1f07fcd4c89f8b3aefbb672e7c75e868 = L.circleMarker(
+                [38.5923, -89.9112],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_57424c785710284e71b0dadb373cf7f7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7d5fe6bd88e2d1b35de2034e7b919e6d = $(`<div id="html_7d5fe6bd88e2d1b35de2034e7b919e6d" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>O'Fallon Buick GMC</b><br>       <b>Address:</b> 2150 Technology Dr, O'Fallon, MO 63368<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 3     </div>     </div>`)[0];
+            popup_57424c785710284e71b0dadb373cf7f7.setContent(html_7d5fe6bd88e2d1b35de2034e7b919e6d);
+        
+
+        circle_marker_1f07fcd4c89f8b3aefbb672e7c75e868.bindPopup(popup_57424c785710284e71b0dadb373cf7f7)
+        ;
+
+        
+    
+    
+            var circle_marker_4dc9dbdff8c7e386b12e273f0e7ca32f = L.circleMarker(
+                [39.13, -94.5786],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_4d9ed6f6b48d2c6034e4d4effcd7fcdf = L.popup({"maxWidth": "100%"});
+
+        
+            var html_238c45a7be719d86ffa040d6e578d975 = $(`<div id="html_238c45a7be719d86ffa040d6e578d975" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Oakes KIA</b><br>       <b>Address:</b> 2900 Burlington St, North Kansas City, MO 64116, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_4d9ed6f6b48d2c6034e4d4effcd7fcdf.setContent(html_238c45a7be719d86ffa040d6e578d975);
+        
+
+        circle_marker_4dc9dbdff8c7e386b12e273f0e7ca32f.bindPopup(popup_4d9ed6f6b48d2c6034e4d4effcd7fcdf)
+        ;
+
+        
+    
+    
+            var circle_marker_9fb0ee6ed5f68873b1203961e4b3d6d0 = L.circleMarker(
+                [38.8003, -90.6265],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_53853c740867fca74f6cca3791235426 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c9f1c03be34a9db4f4e0b478ff8a4cb7 = $(`<div id="html_c9f1c03be34a9db4f4e0b478ff8a4cb7" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Pappas Toyota</b><br>       <b>Address:</b> 10011 Spencer Rd, St Peters, MO 63376<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut Pack &nbsp; <b>Used Coverage:</b> Custom<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 14     </div>     </div>`)[0];
+            popup_53853c740867fca74f6cca3791235426.setContent(html_c9f1c03be34a9db4f4e0b478ff8a4cb7);
+        
+
+        circle_marker_9fb0ee6ed5f68873b1203961e4b3d6d0.bindPopup(popup_53853c740867fca74f6cca3791235426)
+        ;
+
+        
+    
+    
+            var circle_marker_d6009c0eb416d55002a72ba65c5ac9c6 = L.circleMarker(
+                [38.6609, -90.4226],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_640f41f7871efa9101d79c41b27a9e23 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d37c22c6d30b89224ad453677cb2813a = $(`<div id="html_d37c22c6d30b89224ad453677cb2813a" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Plaza BMW</b><br>       <b>Address:</b> 11858 Olive Blvd, Creve Coeur, MO 63141, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 6     </div>     </div>`)[0];
+            popup_640f41f7871efa9101d79c41b27a9e23.setContent(html_d37c22c6d30b89224ad453677cb2813a);
+        
+
+        circle_marker_d6009c0eb416d55002a72ba65c5ac9c6.bindPopup(popup_640f41f7871efa9101d79c41b27a9e23)
+        ;
+
+        
+    
+    
+            var circle_marker_42155b83c385d5df62e9dd2b98b763f1 = L.circleMarker(
+                [38.6609, -90.4226],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_df5d50d0d972abd9b2df75f480688456 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_63d0e9ccb68781b21a45fbb1e948b05d = $(`<div id="html_63d0e9ccb68781b21a45fbb1e948b05d" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Plaza Infiniti</b><br>       <b>Address:</b> 755 N New Ballas Rd, Creve Coeur, MO 63141<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 4     </div>     </div>`)[0];
+            popup_df5d50d0d972abd9b2df75f480688456.setContent(html_63d0e9ccb68781b21a45fbb1e948b05d);
+        
+
+        circle_marker_42155b83c385d5df62e9dd2b98b763f1.bindPopup(popup_df5d50d0d972abd9b2df75f480688456)
+        ;
+
+        
+    
+    
+            var circle_marker_737a25f2ecc1462ec3a99eb53290603f = L.circleMarker(
+                [38.6609, -90.4226],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_fe9ac030f2af62341e725f9b4dc426a8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_569b8cf6bb4578df1bfdbb685c68387b = $(`<div id="html_569b8cf6bb4578df1bfdbb685c68387b" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Plaza Land Rover</b><br>       <b>Address:</b> 11654 Olive Blvd, Creve Coeur, MO 63141<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_fe9ac030f2af62341e725f9b4dc426a8.setContent(html_569b8cf6bb4578df1bfdbb685c68387b);
+        
+
+        circle_marker_737a25f2ecc1462ec3a99eb53290603f.bindPopup(popup_fe9ac030f2af62341e725f9b4dc426a8)
+        ;
+
+        
+    
+    
+            var circle_marker_ae2365db31f493d9381d7b4f2d54d85c = L.circleMarker(
+                [38.6609, -90.4226],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_08754afd79870d760fa5d1f594883063 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2d149e958bc9f781e14eea6f3be1a7db = $(`<div id="html_2d149e958bc9f781e14eea6f3be1a7db" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Plaza Mercedes-Benz</b><br>       <b>Address:</b> 11910 Olive Blvd, Creve Coeur, MO 63141<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 2     </div>     </div>`)[0];
+            popup_08754afd79870d760fa5d1f594883063.setContent(html_2d149e958bc9f781e14eea6f3be1a7db);
+        
+
+        circle_marker_ae2365db31f493d9381d7b4f2d54d85c.bindPopup(popup_08754afd79870d760fa5d1f594883063)
+        ;
+
+        
+    
+    
+            var circle_marker_989e11270f641f853e1842d6225a8b0a = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_8dafce7c8a68b270fbecb58c427d9c1e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9def9ba42ad12adf53d292fe514dcdc7 = $(`<div id="html_9def9ba42ad12adf53d292fe514dcdc7" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Porsche St. Louis</b><br>       <b>Address:</b> 2970 S Hanley Rd, St. Louis, MO 63143<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut &nbsp; <b>Used Coverage:</b> ShortCut<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 20     </div>     </div>`)[0];
+            popup_8dafce7c8a68b270fbecb58c427d9c1e.setContent(html_9def9ba42ad12adf53d292fe514dcdc7);
+        
+
+        circle_marker_989e11270f641f853e1842d6225a8b0a.bindPopup(popup_8dafce7c8a68b270fbecb58c427d9c1e)
+        ;
+
+        
+    
+    
+            var circle_marker_61d04b7929c33e0bcb31022a89e26483 = L.circleMarker(
+                [38.7839, -90.4812],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_c36d2f74b17caf0d60d0633d66dadfaf = L.popup({"maxWidth": "100%"});
+
+        
+            var html_69b0794325d6e85381b2c5b2aba7a5cb = $(`<div id="html_69b0794325d6e85381b2c5b2aba7a5cb" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Pundmann Ford</b><br>       <b>Address:</b> 2727 W Clay St, St Charles, MO 63301<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut Pack &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 6     </div>     </div>`)[0];
+            popup_c36d2f74b17caf0d60d0633d66dadfaf.setContent(html_69b0794325d6e85381b2c5b2aba7a5cb);
+        
+
+        circle_marker_61d04b7929c33e0bcb31022a89e26483.bindPopup(popup_c36d2f74b17caf0d60d0633d66dadfaf)
+        ;
+
+        
+    
+    
+            var circle_marker_1dda52e7378cf4510a7735df021bcd3a = L.circleMarker(
+                [38.8906, -90.1843],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_0f489bfad24eda55a3218b45500c5136 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_cdf5071a94826c3e66da83c47a703446 = $(`<div id="html_cdf5071a94826c3e66da83c47a703446" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Quality Buick GMC Cadillac</b><br>       <b>Address:</b> 1620 Homer M Adams Pkwy, Alton, IL 62002<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_0f489bfad24eda55a3218b45500c5136.setContent(html_cdf5071a94826c3e66da83c47a703446);
+        
+
+        circle_marker_1dda52e7378cf4510a7735df021bcd3a.bindPopup(popup_0f489bfad24eda55a3218b45500c5136)
+        ;
+
+        
+    
+    
+            var circle_marker_61670e9f1bb4414e5f11663ce928ceb3 = L.circleMarker(
+                [39.1209, -90.3287],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_547a5381a70dd4224016c528263293cd = L.popup({"maxWidth": "100%"});
+
+        
+            var html_32b55dc3b47fb50dd0b3858bf47dc8af = $(`<div id="html_32b55dc3b47fb50dd0b3858bf47dc8af" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Quality CDJR Jerseyville</b><br>       <b>Address:</b> 1200 S State St, Jerseyville, IL 62052<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_547a5381a70dd4224016c528263293cd.setContent(html_32b55dc3b47fb50dd0b3858bf47dc8af);
+        
+
+        circle_marker_61670e9f1bb4414e5f11663ce928ceb3.bindPopup(popup_547a5381a70dd4224016c528263293cd)
+        ;
+
+        
+    
+    
+            var circle_marker_adb37a3178264651365cbfeaa4a9dd05 = L.circleMarker(
+                [38.5767, -92.1735],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_8ffc963cacae452eb32ea8b45ce1556e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f29eb249db30cf69bee3ba631f3fd8eb = $(`<div id="html_f29eb249db30cf69bee3ba631f3fd8eb" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Rusty Drewing Cadillac</b><br>       <b>Address:</b> 2033 Christy Dr, Jefferson City, MO 65101<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut Pack &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 7     </div>     </div>`)[0];
+            popup_8ffc963cacae452eb32ea8b45ce1556e.setContent(html_f29eb249db30cf69bee3ba631f3fd8eb);
+        
+
+        circle_marker_adb37a3178264651365cbfeaa4a9dd05.bindPopup(popup_8ffc963cacae452eb32ea8b45ce1556e)
+        ;
+
+        
+    
+    
+            var circle_marker_68e4d632a8bbd036c852e845279be9a8 = L.circleMarker(
+                [38.5767, -92.1735],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_09d8adb0ec7d347ecd66a8f6970cd8f2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3e3912ce98938706f79cd9c87a006670 = $(`<div id="html_3e3912ce98938706f79cd9c87a006670" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Rusty Drewing Chevrolet Buick GMC</b><br>       <b>Address:</b> 2033 Christy Dr, Jefferson City, MO 65101, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 18     </div>     </div>`)[0];
+            popup_09d8adb0ec7d347ecd66a8f6970cd8f2.setContent(html_3e3912ce98938706f79cd9c87a006670);
+        
+
+        circle_marker_68e4d632a8bbd036c852e845279be9a8.bindPopup(popup_09d8adb0ec7d347ecd66a8f6970cd8f2)
+        ;
+
+        
+    
+    
+            var circle_marker_7dfbac8f01989b1fd4bdaaf74089296a = L.circleMarker(
+                [38.5767, -92.1735],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_7f7560a0224549efd3ef863623cda910 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b09b5a8a62a038c13897f43f3fec1a35 = $(`<div id="html_b09b5a8a62a038c13897f43f3fec1a35" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Rusty Drewing Toyota</b><br>       <b>Address:</b> 2105 Christy Dr, Jefferson City, MO 65101, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 3     </div>     </div>`)[0];
+            popup_7f7560a0224549efd3ef863623cda910.setContent(html_b09b5a8a62a038c13897f43f3fec1a35);
+        
+
+        circle_marker_7dfbac8f01989b1fd4bdaaf74089296a.bindPopup(popup_7f7560a0224549efd3ef863623cda910)
+        ;
+
+        
+    
+    
+            var circle_marker_1dd125e0d2315f0716e05e76dea0cd83 = L.circleMarker(
+                [37.9514, -91.7713],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_2dbc929ff5c3addc03f6f42ae8c8cdb8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1268455fba90db89ac6a81a9fd0bbea7 = $(`<div id="html_1268455fba90db89ac6a81a9fd0bbea7" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Sakelaris Ford Lincoln - Rolla</b><br>       <b>Address:</b> 1621 Martin Springs Dr, Rolla, MO 65401, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 2     </div>     </div>`)[0];
+            popup_2dbc929ff5c3addc03f6f42ae8c8cdb8.setContent(html_1268455fba90db89ac6a81a9fd0bbea7);
+        
+
+        circle_marker_1dd125e0d2315f0716e05e76dea0cd83.bindPopup(popup_2dbc929ff5c3addc03f6f42ae8c8cdb8)
+        ;
+
+        
+    
+    
+            var circle_marker_18682ae4cb7dbef80e207dfa6d5682ef = L.circleMarker(
+                [38.5584, -91.0124],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_a5edfacbb09a2ba6e9a5c35769daf477 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ad7993d081185850ed78c86c02a7080b = $(`<div id="html_ad7993d081185850ed78c86c02a7080b" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Schicker CDJR of Washington</b><br>       <b>Address:</b> 5824 MO-100, Washington, MO 63090, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 2     </div>     </div>`)[0];
+            popup_a5edfacbb09a2ba6e9a5c35769daf477.setContent(html_ad7993d081185850ed78c86c02a7080b);
+        
+
+        circle_marker_18682ae4cb7dbef80e207dfa6d5682ef.bindPopup(popup_a5edfacbb09a2ba6e9a5c35769daf477)
+        ;
+
+        
+    
+    
+            var circle_marker_b668eeacc2eb80ac85e1593b610c663f = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_6cf93dfe78c9132c2a40c674d6aa521e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_eeeabbf210d1243767bd485cda38e284 = $(`<div id="html_eeeabbf210d1243767bd485cda38e284" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Schicker Ford of St. Louis</b><br>       <b>Address:</b> 3300 S Kingshighway Blvd, St. Louis, MO 63139<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 4     </div>     </div>`)[0];
+            popup_6cf93dfe78c9132c2a40c674d6aa521e.setContent(html_eeeabbf210d1243767bd485cda38e284);
+        
+
+        circle_marker_b668eeacc2eb80ac85e1593b610c663f.bindPopup(popup_6cf93dfe78c9132c2a40c674d6aa521e)
+        ;
+
+        
+    
+    
+            var circle_marker_741a0e1e456e76d0e2c4b0acfaba72bc = L.circleMarker(
+                [38.4503, -91.0082],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_9119ab404ce5bc92cc9609b7aa0c8f1f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_880c46dc3805b378e9a187cc0459003a = $(`<div id="html_880c46dc3805b378e9a187cc0459003a" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Schicker of Union</b><br>       <b>Address:</b> 560 State Hwy 47, Union, MO 63084<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_9119ab404ce5bc92cc9609b7aa0c8f1f.setContent(html_880c46dc3805b378e9a187cc0459003a);
+        
+
+        circle_marker_741a0e1e456e76d0e2c4b0acfaba72bc.bindPopup(popup_9119ab404ce5bc92cc9609b7aa0c8f1f)
+        ;
+
+        
+    
+    
+            var circle_marker_13d562465f54992a0e09b1c5884ada1a = L.circleMarker(
+                [38.5923, -89.9112],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_57aaded962f181aea83df231241e30b5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f1a9a98cbefa8820e80d2f525d99a56f = $(`<div id="html_f1a9a98cbefa8820e80d2f525d99a56f" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Serra Honda</b><br>       <b>Address:</b> 1268 Central Park Dr, O'Fallon, IL 62269, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 22     </div>     </div>`)[0];
+            popup_57aaded962f181aea83df231241e30b5.setContent(html_f1a9a98cbefa8820e80d2f525d99a56f);
+        
+
+        circle_marker_13d562465f54992a0e09b1c5884ada1a.bindPopup(popup_57aaded962f181aea83df231241e30b5)
+        ;
+
+        
+    
+    
+            var circle_marker_6cb239e8d5a0c9da7e5003beda8fead3 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_484ceb3d23131613416bc50b01ed3ec9 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2c3ccd88721de6471597f90c34acf4ce = $(`<div id="html_2c3ccd88721de6471597f90c34acf4ce" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>South County DCJR</b><br>       <b>Address:</b> 7127 S Lindbergh Blvd, St. Louis, MO 63125<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut Pack &nbsp; <b>Used Coverage:</b> ShortCut Pack<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 35     </div>     </div>`)[0];
+            popup_484ceb3d23131613416bc50b01ed3ec9.setContent(html_2c3ccd88721de6471597f90c34acf4ce);
+        
+
+        circle_marker_6cb239e8d5a0c9da7e5003beda8fead3.bindPopup(popup_484ceb3d23131613416bc50b01ed3ec9)
+        ;
+
+        
+    
+    
+            var circle_marker_9012f95a96a96ccbd0cd80101fe85279 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_2616ed6fc6973b43a0c13b8770863c30 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d76e2c6d8865727e8906447017ae3945 = $(`<div id="html_d76e2c6d8865727e8906447017ae3945" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Spirit Lexus</b><br>       <b>Address:</b> 10176 Corporate Square Dr, St. Louis, MO 63132, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> Custom<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 29     </div>     </div>`)[0];
+            popup_2616ed6fc6973b43a0c13b8770863c30.setContent(html_d76e2c6d8865727e8906447017ae3945);
+        
+
+        circle_marker_9012f95a96a96ccbd0cd80101fe85279.bindPopup(popup_2616ed6fc6973b43a0c13b8770863c30)
+        ;
+
+        
+    
+    
+            var circle_marker_e890d1d2df62817e68d1f84e5c8f6610 = L.circleMarker(
+                [38.5381, -90.4076],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_c7f935dc9bfa8bb996dba1c3cd5814eb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1d4e15ba7983e2ba67f4b2532abfda1a = $(`<div id="html_1d4e15ba7983e2ba67f4b2532abfda1a" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Sunset Hills Subaru</b><br>       <b>Address:</b> 10100 Watson Rd, Sunset Hills, MO 63127<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_c7f935dc9bfa8bb996dba1c3cd5814eb.setContent(html_1d4e15ba7983e2ba67f4b2532abfda1a);
+        
+
+        circle_marker_e890d1d2df62817e68d1f84e5c8f6610.bindPopup(popup_c7f935dc9bfa8bb996dba1c3cd5814eb)
+        ;
+
+        
+    
+    
+            var circle_marker_f5eb93a0c383538a08279c99d866f0f0 = L.circleMarker(
+                [38.8003, -90.6265],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_981da878d251950d8fcee13cf4b65100 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0e52d30a7cfd58d2952a36193e4c02b1 = $(`<div id="html_0e52d30a7cfd58d2952a36193e4c02b1" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Suntrup Buick GMC</b><br>       <b>Address:</b> 4200 N Service Rd, St Peters, MO 63376<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut &nbsp; <b>Used Coverage:</b> Flyout<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 30     </div>     </div>`)[0];
+            popup_981da878d251950d8fcee13cf4b65100.setContent(html_0e52d30a7cfd58d2952a36193e4c02b1);
+        
+
+        circle_marker_f5eb93a0c383538a08279c99d866f0f0.bindPopup(popup_981da878d251950d8fcee13cf4b65100)
+        ;
+
+        
+    
+    
+            var circle_marker_65ccc4a7ddf0cd19dd29c9e4c4040778 = L.circleMarker(
+                [38.5834, -90.406],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_307db6fce20f1042692a44ccfeac5499 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_50acb2a4d3f78052d6091e8ba929ab00 = $(`<div id="html_50acb2a4d3f78052d6091e8ba929ab00" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Suntrup Ford Kirkwood</b><br>       <b>Address:</b> 10340 Manchester Rd, Kirkwood, MO 63122<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> None &nbsp; <b>Used Coverage:</b> Flyout<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 24     </div>     </div>`)[0];
+            popup_307db6fce20f1042692a44ccfeac5499.setContent(html_50acb2a4d3f78052d6091e8ba929ab00);
+        
+
+        circle_marker_65ccc4a7ddf0cd19dd29c9e4c4040778.bindPopup(popup_307db6fce20f1042692a44ccfeac5499)
+        ;
+
+        
+    
+    
+            var circle_marker_3d86e5df8dc403eb576864c4102f5b3f = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_cb60e49e8a64d087bbb2fd0510d81a81 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f801043a1fb3f7689412fe53067d8c03 = $(`<div id="html_f801043a1fb3f7689412fe53067d8c03" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Suntrup Ford Westport</b><br>       <b>Address:</b> 2020 Kratky Rd, St. Louis, MO 63114<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> None &nbsp; <b>Used Coverage:</b> Flyout<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 23     </div>     </div>`)[0];
+            popup_cb60e49e8a64d087bbb2fd0510d81a81.setContent(html_f801043a1fb3f7689412fe53067d8c03);
+        
+
+        circle_marker_3d86e5df8dc403eb576864c4102f5b3f.bindPopup(popup_cb60e49e8a64d087bbb2fd0510d81a81)
+        ;
+
+        
+    
+    
+            var circle_marker_0ff75852c9ac4e28044bee2ac218ec10 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_aa382f843b8df335d8945f0a9828aed3 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_87e1aebf591432022db7f30b3331effb = $(`<div id="html_87e1aebf591432022db7f30b3331effb" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Suntrup Hyundai</b><br>       <b>Address:</b> 5926 S Lindbergh Blvd, St. Louis, MO 63123<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> Custom &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 7     </div>     </div>`)[0];
+            popup_aa382f843b8df335d8945f0a9828aed3.setContent(html_87e1aebf591432022db7f30b3331effb);
+        
+
+        circle_marker_0ff75852c9ac4e28044bee2ac218ec10.bindPopup(popup_aa382f843b8df335d8945f0a9828aed3)
+        ;
+
+        
+    
+    
+            var circle_marker_11b559e402fc5f1be112cbc390035967 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_f86a442966e01e9abcc212cf5883fd67 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_53349899f6192992aaab7b12b57f2be2 = $(`<div id="html_53349899f6192992aaab7b12b57f2be2" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Suntrup Kia</b><br>       <b>Address:</b> 6263 S Lindbergh Blvd, St. Louis, MO 63123<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> Custom &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 10     </div>     </div>`)[0];
+            popup_f86a442966e01e9abcc212cf5883fd67.setContent(html_53349899f6192992aaab7b12b57f2be2);
+        
+
+        circle_marker_11b559e402fc5f1be112cbc390035967.bindPopup(popup_f86a442966e01e9abcc212cf5883fd67)
+        ;
+
+        
+    
+    
+            var circle_marker_30359fca144541c87939d9e659661c7d = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_5d464a99853d0a3bedeb0cfb0b283472 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_44cbe7f43ed370b7e59cc5909bcf882d = $(`<div id="html_44cbe7f43ed370b7e59cc5909bcf882d" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Suntrup Nissan</b><br>       <b>Address:</b> 6000 S Lindbergh Blvd, St. Louis, MO 63123<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut &nbsp; <b>Used Coverage:</b> ShortCut<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 10     </div>     </div>`)[0];
+            popup_5d464a99853d0a3bedeb0cfb0b283472.setContent(html_44cbe7f43ed370b7e59cc5909bcf882d);
+        
+
+        circle_marker_30359fca144541c87939d9e659661c7d.bindPopup(popup_5d464a99853d0a3bedeb0cfb0b283472)
+        ;
+
+        
+    
+    
+            var circle_marker_0206b50a6828ff9671d5f5f8cbf5c0c6 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_b629e932b23ba0e9acb5ec5ead7078c4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_df87ed01a66c68db1b32f452b313e7ed = $(`<div id="html_df87ed01a66c68db1b32f452b313e7ed" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Suntrup Volkswagen</b><br>       <b>Address:</b> 6014 S Lindbergh Blvd, St. Louis, MO 63123<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> ShortCut &nbsp; <b>Used Coverage:</b> ShortCut<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 5     </div>     </div>`)[0];
+            popup_b629e932b23ba0e9acb5ec5ead7078c4.setContent(html_df87ed01a66c68db1b32f452b313e7ed);
+        
+
+        circle_marker_0206b50a6828ff9671d5f5f8cbf5c0c6.bindPopup(popup_b629e932b23ba0e9acb5ec5ead7078c4)
+        ;
+
+        
+    
+    
+            var circle_marker_8c3154c190fe68441317fcbbe5b1bc57 = L.circleMarker(
+                [39.0997, -94.5786],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_2bc79f18cef75b753aa4c3e73a335ca5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4e8f14139c7be8ae82920f655a0a9dca = $(`<div id="html_4e8f14139c7be8ae82920f655a0a9dca" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Thoroughbred Ford</b><br>       <b>Address:</b> Thoroughbred Ford, 8501 North Boardwalk Avenue, Kansas City, MO, USA<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 15     </div>     </div>`)[0];
+            popup_2bc79f18cef75b753aa4c3e73a335ca5.setContent(html_4e8f14139c7be8ae82920f655a0a9dca);
+        
+
+        circle_marker_8c3154c190fe68441317fcbbe5b1bc57.bindPopup(popup_2bc79f18cef75b753aa4c3e73a335ca5)
+        ;
+
+        
+    
+    
+            var circle_marker_575752d40e68dead8dc202b4b990a66c = L.circleMarker(
+                [38.2678, -90.3796],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_328125ae1dd33bd2d3f1b93a1a070a54 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e966181b4baaae789da9e0c0a99e9a15 = $(`<div id="html_e966181b4baaae789da9e0c0a99e9a15" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Twin City Toyota</b><br>       <b>Address:</b> 301 Autumn Ridge Dr, Herculaneum, MO 63048<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 0     </div>     </div>`)[0];
+            popup_328125ae1dd33bd2d3f1b93a1a070a54.setContent(html_e966181b4baaae789da9e0c0a99e9a15);
+        
+
+        circle_marker_575752d40e68dead8dc202b4b990a66c.bindPopup(popup_328125ae1dd33bd2d3f1b93a1a070a54)
+        ;
+
+        
+    
+    
+            var circle_marker_94fa1e8147daeac93980330606be0a44 = L.circleMarker(
+                [38.627, -90.1994],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_4f8532ddf623dfce7603f35cd2381682 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_4a92fa98775e3fae6f57e1456875c861 = $(`<div id="html_4a92fa98775e3fae6f57e1456875c861" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Victory Toyota</b><br>       <b>Address:</b> 11771 Tesson Ferry Rd, St. Louis, MO 63128<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> Custom &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 5     </div>     </div>`)[0];
+            popup_4f8532ddf623dfce7603f35cd2381682.setContent(html_4a92fa98775e3fae6f57e1456875c861);
+        
+
+        circle_marker_94fa1e8147daeac93980330606be0a44.bindPopup(popup_4f8532ddf623dfce7603f35cd2381682)
+        ;
+
+        
+    
+    
+            var circle_marker_eec0c9610cd0185cb804aaa6fb3b536e = L.circleMarker(
+                [38.6126, -90.3248],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_8fb6746c79b0a4041c49443d542c8918 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_95de318be462b7c7011286bb0fd66af0 = $(`<div id="html_95de318be462b7c7011286bb0fd66af0" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Volvo Cars St. Louis</b><br>       <b>Address:</b> 7700 Manchester Ave, Maplewood, MO 63143<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 1     </div>     </div>`)[0];
+            popup_8fb6746c79b0a4041c49443d542c8918.setContent(html_95de318be462b7c7011286bb0fd66af0);
+        
+
+        circle_marker_eec0c9610cd0185cb804aaa6fb3b536e.bindPopup(popup_8fb6746c79b0a4041c49443d542c8918)
+        ;
+
+        
+    
+    
+            var circle_marker_6c5c10dc371247c666b52f746b849f8d = L.circleMarker(
+                [38.597, -90.5093],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_53dc87ae1be50ff20fe1894bb2b0d354);
+        
+    
+        var popup_f879d882298bd49dd3a4e1c74aadf425 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_df9c6c60e571dc91a5997033142758f4 = $(`<div id="html_df9c6c60e571dc91a5997033142758f4" style="width: 100.0%; height: 100.0%;">     <div style='font-size:13px'>       <b>Volvo Cars West County</b><br>       <b>Address:</b> 14410 Manchester Rd, Manchester, MO 63011<br>       <b>Label:</b> Dealership<br>       <b>New Coverage:</b> nan &nbsp; <b>Used Coverage:</b> nan<br>       <b>Closed Deals:</b> 0 &nbsp; <b>Open Deals:</b> 38     </div>     </div>`)[0];
+            popup_f879d882298bd49dd3a4e1c74aadf425.setContent(html_df9c6c60e571dc91a5997033142758f4);
+        
+
+        circle_marker_6c5c10dc371247c666b52f746b849f8d.bindPopup(popup_f879d882298bd49dd3a4e1c74aadf425)
+        ;
+
+        
+    
+    
+            var layer_control_7fa79f482854d21e065212ac9efba793 = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_d2d5bae02b836b42f221c5c1df3a653c,
+                },
+                overlays :  {
+                    "Service Areas" : feature_group_5a0996e2d600c931bdc6a13da492e8ab,
+                    "Dealership Accounts" : feature_group_07bd3a3b69f6b5a680d5c30f9d207475,
+                },
+            };
+            L.control.layers(
+                layer_control_7fa79f482854d21e065212ac9efba793.base_layers,
+                layer_control_7fa79f482854d21e065212ac9efba793.overlays,
+                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+            ).addTo(map_c9ff970d7ccefc0cbb2dea9d559783c9);
+        
+</script>
+</html>
