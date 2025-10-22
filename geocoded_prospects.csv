@@ -1,0 +1,21 @@
+name,address,geocoded_address,latitude,longitude,type,priority
+Cable Dahmer Chevrolet of Kansas City,"555 W 103rd St, Kansas City, MO 64114","Cable Dahmer of Kansas City, 555, West 103rd Street, Dallas, Kansas City, Jackson County, Missouri, 64114, United States",38.9409311,-94.5990562,Chevrolet,High
+Cable Dahmer Buick GMC of Kansas City,"907 West 104th Street, Kansas City, MO 64114","907, West 104th Street, Dallas, Kansas City, Jackson County, Missouri, 64114, United States of America",38.9399156,-94.6029304,Buick GMC,High
+Cable Dahmer Cadillac of Kansas City,"1151 West 104th Street, Kansas City, MO 64114","1151, West 104th Street, Dallas, Kansas City, Jackson County, Missouri, 64114, United States of America",38.9399411,-94.6042905,Cadillac,Medium
+Cable Dahmer CDJR Kansas City,"1001 W 104th Street, Kansas City, MO 64114","1001, West 104th Street, Dallas, Kansas City, Jackson County, Missouri, 64114, United States",38.9399245,-94.6034544,CDJR,High
+Hendrick Chevrolet Kansas City,"Kansas City, MO","Kansas City, Jackson County, Missouri, United States of America",39.100105,-94.5781416,Chevrolet,High
+Reliable Chevrolet,"3655 S Campbell Ave, Springfield, MO 65807","Reliable Chevrolet, 3655, South Campbell Avenue, Springfield, Greene County, Missouri, 65807, United States of America",37.1479256,-93.2969749,Chevrolet,High
+Corwin Ford of Springfield,"Springfield, MO","Springfield, Greene County, Missouri, United States of America",37.2081729,-93.2922715,Ford,High
+Corwin CDJR of Springfield,"Springfield, MO","Springfield, Greene County, Missouri, United States of America",37.2081729,-93.2922715,CDJR,High
+Thompson Sales Company,"Springfield, MO","Springfield, Greene County, Missouri, United States of America",37.2081729,-93.2922715,Buick GMC Cadillac,High
+Pinegar Honda,"Springfield, MO","Springfield, Greene County, Missouri, United States of America",37.2081729,-93.2922715,Honda,High
+Pinegar Chevrolet,"Springfield, MO","Springfield, Greene County, Missouri, United States of America",37.2081729,-93.2922715,Chevrolet,High
+Fletcher Chrysler Jeep Dodge Ram,"3111 E 32nd St, Joplin, MO 64804","East 32nd Street, Gateway Drive, Joplin, Newton County, Missouri, 64804, United States",37.0548055,-94.4928621,CDJR,High
+Fletcher Hyundai,"3111 E 32nd St, Joplin, MO 64804","East 32nd Street, Gateway Drive, Joplin, Newton County, Missouri, 64804, United States of America",37.0548055,-94.4928621,Hyundai,Medium
+Fletcher Toyota,"2209 S Range Line Rd, Joplin, MO 64804","2209, South Range Line Road, Joplin, Jasper County, Missouri, 64804, United States of America",37.0660915,-94.4780776,Toyota,High
+Frank Fletcher Ford,"3015 Turkey Creek Rd, Joplin, MO 64801","Frank Fletcher Ford, 3015, Turkey Creek Road, Joplin, Jasper County, Missouri, 64801, United States of America",37.0949768,-94.4751034,Ford,High
+Landers Chevrolet of Joplin,"Joplin, MO","Joplin, Jasper County, Missouri, United States of America",37.0841838,-94.5133385,Chevrolet,High
+Auffenberg Ford Belleville,"Belleville, IL","Belleville, Saint Clair County, Illinois, United States of America",38.5135805,-89.9841627,Ford,High
+Cable Dahmer Buick GMC of Independence,"1834 S Noland Rd, Independence, MO 64055","Cable Dahmer of Independence, 1834, South Noland Road, Independence, Jackson County, Missouri, 64055, United States of America",39.0707781,-94.414906,Buick GMC,Medium
+Cable Dahmer Chevrolet of Independence,"3107 S Noland Rd, Independence, MO 64055","3107, South Noland Road, Independence, Jackson County, Missouri, 64055, United States of America",39.064449,-94.414515,Chevrolet,High
+Jim Butler Auto Group,"759 Gravois Bluffs Blvd, Fenton, MO 63026","759, Gravois Bluffs Boulevard, Gravois Bluffs, Fenton, Saint Louis County, Missouri, 63026, United States of America",38.5060135,-90.4507989,Multi-Brand,Medium
